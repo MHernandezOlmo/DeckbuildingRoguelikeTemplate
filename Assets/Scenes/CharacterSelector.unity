@@ -1155,7 +1155,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 993117281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1231436058}
+        m_TargetAssemblyTypeName: GameFlowController, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FirstRelicSelector
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &993117281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1251,6 +1263,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62dbfd8a80a6a96478bd49f3309affc9, type: 3}
+--- !u!114 &1231436058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8945594073459905890, guid: 62dbfd8a80a6a96478bd49f3309affc9, type: 3}
+  m_PrefabInstance: {fileID: 1231436057}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab403de14c7d4ba469802719b2cf0279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1272601191
 GameObject:
   m_ObjectHideFlags: 0
