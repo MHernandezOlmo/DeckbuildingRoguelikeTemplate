@@ -6,7 +6,18 @@ using UnityEngine;
 public class Map
 {
     public List<List<IMapNode>> Nodes { get; private set;}
-
+    public IMapNode GetNode(int nodeNumber) {
+        int cumulativeCount = 0;
+    
+        foreach (var row in Nodes) {
+            if (nodeNumber < cumulativeCount + row.Count) {
+                int rowIndex = nodeNumber - cumulativeCount;
+                return row[rowIndex];
+            }
+            cumulativeCount += row.Count;
+        }
+        return null;
+    }
     public Map()
     {
         Nodes = new List<List<IMapNode>>();

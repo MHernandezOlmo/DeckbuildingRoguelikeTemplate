@@ -10,18 +10,24 @@ public class MapVisualizer : MonoBehaviour
     [SerializeField] private Sprite _stageBossSpritee;
     [SerializeField] private Sprite _restSprite;
 
-    [SerializeField] private GameObject _mapNodePrefab; 
+    [SerializeField] private GameObject _mapNodePrefab;
+    private Map _currentMap;
+
+    public Map GetMap()
+    {
+        return _currentMap;
+    }
     void Start()
     {
-        Map map = new Map();
+        _currentMap = new Map();
 
-        for (int i = 0; i < map.Nodes.Count; i++)
+        for (int i = 0; i < _currentMap.Nodes.Count; i++)
         {
-            for (int j = 0; j < map.Nodes[i].Count; j++)
+            for (int j = 0; j < _currentMap.Nodes[i].Count; j++)
             {
                 MapNode node = Instantiate(_mapNodePrefab,
-                        new Vector3(GetHorizontalPosition(j, map.Nodes[i].Count), -i, 0), quaternion.identity).GetComponent<MapNode>();
-                switch (map.Nodes[i][j])
+                        new Vector3(GetHorizontalPosition(j, _currentMap.Nodes[i].Count), -i, 0), quaternion.identity).GetComponent<MapNode>();
+                switch (_currentMap.Nodes[i][j])
                 {
                     case StageBossNode:
                         node.SetStageBossNode();
