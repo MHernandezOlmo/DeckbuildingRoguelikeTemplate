@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6050758254729298951}
   - component: {fileID: 1411373705420384645}
+  - component: {fileID: 8973438057947655572}
   m_Layer: 0
-  m_Name: Node
+  m_Name: MapNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8973438057947655572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2388889030937607849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c1a7684a2f7624b88a3ae932754b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleSprite: {fileID: 21300000, guid: 3ae0cb0b7d243704f933bd832c350b5a, type: 3}
+  _restSprite: {fileID: 21300000, guid: 1c081480dd96a3f488d83108a8788284, type: 3}
+  _stageBossSprite: {fileID: 21300000, guid: d0acedc1662153a4487966c8626b151c, type: 3}
+  _renderer: {fileID: 1411373705420384645}

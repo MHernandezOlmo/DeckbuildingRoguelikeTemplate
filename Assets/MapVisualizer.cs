@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MapVisualizer : MonoBehaviour
@@ -18,7 +19,23 @@ public class MapVisualizer : MonoBehaviour
         {
             for (int j = 0; j < map.Nodes[i].Count; j++)
             {
-                Instantiate(_mapNodePrefab, new Vector3(GetHorizontalPosition(j,map.Nodes[i].Count),-i/2f,0), quaternion.identity);
+                MapNode node = Instantiate(_mapNodePrefab,
+                        new Vector3(GetHorizontalPosition(j, map.Nodes[i].Count), -i, 0), quaternion.identity).GetComponent<MapNode>();
+                switch (map.Nodes[i][j])
+                {
+                    case StageBossNode:
+                        node.SetStageBossNode();
+                        break;
+                    
+                    case RestNode:
+                        node.SetRestNode();
+                        break;
+                    
+                    case BattleNode:
+                        node.SetBattleNode();
+                        break;
+                }
+                
             }
         }
     }
