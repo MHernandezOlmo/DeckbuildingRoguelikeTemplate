@@ -241,8 +241,9 @@ GameObject:
   - component: {fileID: 889468488000404188}
   - component: {fileID: 2845582563402830976}
   - component: {fileID: 146548079937536564}
+  - component: {fileID: 1044141696594561042}
   m_Layer: 5
-  m_Name: UIRelicWidget
+  m_Name: UICharacterWidget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,6 +389,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c64a003c8b43f645add969286e918c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: {fileID: 1187861402711485316}
+  _description: {fileID: 7931447783558292592}
+  _image: {fileID: 4571056880445255551}
+--- !u!114 &1044141696594561042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066206203891479366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe3ca0689ae5b94baab4ada30627adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _title: {fileID: 1187861402711485316}
@@ -668,7 +684,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nombre Reliquia
+  m_text: 'Nombre
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
