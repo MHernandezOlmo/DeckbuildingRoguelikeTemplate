@@ -1076,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 697685478}
-  - component: {fileID: 697685477}
+  - component: {fileID: 697685479}
   m_Layer: 0
   m_Name: SelectCharacterController
   m_TagString: Untagged
@@ -1084,24 +1084,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &697685477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697685476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74a6ebd1b265974f8e0bdc4fccdad41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _widgets:
-  - {fileID: 643064081}
-  - {fileID: 92634658}
-  - {fileID: 1304142204}
-  _characterManager: {fileID: 0}
-  _characterRepository: {fileID: 336510798}
 --- !u!4 &697685478
 Transform:
   m_ObjectHideFlags: 0
@@ -1117,6 +1099,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &697685479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697685476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f4b5af03528849bb862393529e1c239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterRepository: {fileID: 336510798}
+  _widgets:
+  - {fileID: 643064081}
+  - {fileID: 92634658}
+  - {fileID: 1304142204}
 --- !u!1 &702236879
 GameObject:
   m_ObjectHideFlags: 0
