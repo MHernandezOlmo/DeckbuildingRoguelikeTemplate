@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterControllerUIInstaller : MonoBehaviour
+public class SelectCharacterInstaller : MonoBehaviour
 {
+    private SelectCharacterController _selectCharacterController;
+    
     private void Awake()
     {
         IServiceLocator serviceLocator = ServiceLocator.Instance;
@@ -12,6 +14,7 @@ public class CharacterControllerUIInstaller : MonoBehaviour
 
     public void Define(IServiceLocator serviceLocator)
     {
+        CharacterManager _characterManagers;
         
     }
 
