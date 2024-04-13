@@ -14,4 +14,11 @@ public class GameProgress : MonoBehaviour
         }
     }
 
+    public void Save()
+    {
+        
+    }
+    
+    
+
 }
