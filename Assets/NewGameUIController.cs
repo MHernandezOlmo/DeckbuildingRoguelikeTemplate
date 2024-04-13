@@ -8,9 +8,10 @@ public class NewGameUIController : MonoBehaviour
     [SerializeField] private GameObject _continueGameButton;
     void Start()
     {
-        if (PersistenceManager.Instance.MyProgressData.intData ==0)
+        if (PersistenceManager.Instance.IsRunInProgress())
         {
-            
+            _newGameButton.gameObject.SetActive(false);
+            _continueGameButton.gameObject.SetActive(true);
         }
     }
 

@@ -8,6 +8,7 @@ public class PersistenceManager
     private IPersistenceService _persistenceService;
 
     public ProgressData MyProgressData { get; set; }
+    public CurrentRun MyCurrentRun { get; set; }
 
     public static PersistenceManager Instance
     {
@@ -20,7 +21,10 @@ public class PersistenceManager
             return _instance;
         }
     }
-
+    public bool IsRunInProgress()
+    {
+        return MyCurrentRun != null;
+    }
     // Private constructor ensures only the singleton class can instantiate this.
     private PersistenceManager()
     {
@@ -30,7 +34,7 @@ public class PersistenceManager
     // Example method
     public void SaveData()
     {
-        MyProgressData = new ProgressData(5, 0.1234f,"Pruebita");
+        MyProgressData = new ProgressData();
         string jsonData = JsonConvert.SerializeObject(MyProgressData);
         _persistenceService.Save("ProgressData", jsonData);
     }
