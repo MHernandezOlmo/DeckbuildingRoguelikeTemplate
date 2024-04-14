@@ -26,6 +26,6 @@ public class FilePersistenceService : IPersistenceService
             return File.ReadAllText(filePath);
         }
 
-        return "{}";
+        return null;
     }
 }
