@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PersistenceManager
 {
@@ -47,7 +48,14 @@ public class PersistenceManager
         string jsonData = JsonConvert.SerializeObject(MyProgressData);
         _persistenceService.Save("ProgressData", jsonData);
     }
-    
+    public void AddPickedRelicToRun(int relicID)
+    {
+        if (MyCurrentRun != null)
+        {
+            MyCurrentRun.AddPickedRelic(relicID);
+            SaveRunData();
+        }
+    }
     public void LoadData()
     {
         _persistenceService.Load("ProgressData");
@@ -65,5 +73,12 @@ public class PersistenceManager
     {
         LoadData();
         LoadRunData();
+    }
+
+    public void EraseRun()
+    {
+        _persistenceService.Erase("RunData");
+        MyCurrentRun = null;
+        GameFlowEvents.LoadScene.Invoke("Menu");
     }
 }

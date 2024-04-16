@@ -12,6 +12,7 @@ public class MainMenuSceneController : MonoBehaviour
     [SerializeField] private GameObject _statisticsPanel;
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private GameObject _characterSelectionPanel;
+    [SerializeField] private GameObject _leaveGamePanel;
     private int _selectedCharacter;
 
     private void Awake()
@@ -81,10 +82,24 @@ public class MainMenuSceneController : MonoBehaviour
         _selectedCharacter = newCharacterID;
     }
 
+    public void LeaveGame()
+    {
+        _leaveGamePanel.gameObject.SetActive(true);
+    }
+
+    public void HideLeaveGamePanel()
+    {
+        _leaveGamePanel.gameObject.SetActive(false);
+    }
+
+    public void LeaveGameConfirmation()
+    {
+        PersistenceManager.Instance.EraseRun();
+    }
     public void StartRun()
     {
         PersistenceManager.Instance.StartRun(_selectedCharacter);
-        GameFlowEvents.LoadScene.Invoke("Menu");
+        GameFlowEvents.LoadScene.Invoke("FirstRelicSelector");
     }
     public void QuitGame()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,14 @@ public class InitialRelicController : MonoBehaviour
 
     [SerializeField] private List<UIRelicWidget> _widgets;
     [SerializeField] private RelicManager _relicManager;
+    private void OnEnable()
+    {
+        UIRelicWidget.OnRelicPicked += PickRelic;
+    }
+    private void OnDisable()
+    {
+        UIRelicWidget.OnRelicPicked -= PickRelic;
+    }
     void Start()
     {
         List<IRelicData> relicDatas = _relicManager._relicRepository.GetRandomUniqueRelics(3).ToList();
@@ -16,5 +25,11 @@ public class InitialRelicController : MonoBehaviour
         {
             _widgets[i].ReceiveData(relicDatas[i]);
         }
+    }
+
+    public void PickRelic(int relicID)
+    {
+        Debug.Log($"Pickeaste la {relicID}");
+        //PersistenceManager.Instance.AddPickedRelicToRun(relicID);
     }
 }

@@ -5,4 +5,5 @@ public interface IPersistenceService
 {
     void Save(string key, string data);
     string Load(string key);
+    void Erase(string key);
 }

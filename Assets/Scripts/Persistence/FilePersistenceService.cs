@@ -28,4 +28,13 @@ public class FilePersistenceService : IPersistenceService
 
         return null;
     }
+
+    public void Erase(string key)
+    {
+        string filePath = Path.Combine(folderPath, key + ".json");
+        if (File.Exists(filePath))
+        {
+             File.Delete(filePath);
+        }
+    }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cb01c04c6a970e4d9f9cfaac38c7222, type: 3}
-  m_Name: MiniRelic2
+  m_Name: MiniRelic9
   m_EditorClassIdentifier: 
-  id: 2
-  name: R N 2
-  description: R D 2
-  icon: {fileID: 21300000, guid: 7884142c5655bf84cb60ed875dc5ab31, type: 3}
+  id: 9
+  name: R N 9
+  description: R D 9
+  icon: {fileID: 21300000, guid: b970075aa8ec0664791cdace3181b979, type: 3}

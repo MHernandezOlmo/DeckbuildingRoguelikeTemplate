@@ -7,9 +7,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Relic", menuName = "Relic")]
 public class SORelic : ScriptableObject, IRelicData
 {
-    [SerializeField] private string id;
+    [SerializeField] private int id;
 
-    public string Id
+    public int Id
     {
         get
         {
