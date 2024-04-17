@@ -73,6 +73,7 @@ public class MapVisualizer : MonoBehaviour
         switch (_UIMapNodes[node]._type)
         {
             case MapNodes.Battle:
+                PersistenceManager.Instance.SelectBattle(node);
                 GameFlowEvents.LoadScene.Invoke("Battle");        
                 break;
             

@@ -70,6 +70,19 @@ public class PersistenceManager
             SaveRunData();
         }
     }
+
+    public void WinBattle()
+    {
+        MyCurrentRun._currentMapNodeID = MyCurrentRun._currentBattleID;
+        SaveRunData();
+        GameFlowEvents.LoadScene.Invoke("Map");
+    }
+
+    public void SelectBattle(int battleNode)
+    {
+        _myCurrentRun._currentBattleID =battleNode;
+        SaveRunData();
+    }
     public void LoadData()
     {
         _persistenceService.Load("ProgressData");
