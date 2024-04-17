@@ -12,15 +12,21 @@ public class MapVisualizer : MonoBehaviour
 
     [SerializeField] private GameObject _mapNodePrefab;
     private Map _currentMap;
-
+    [SerializeField] private List<MapNode> _UIMapNodes;
+    [SerializeField] private GameObject _playerIcon;
     public Map GetMap()
     {
         return _currentMap;
     }
+
+    public MapNode GetMapNode(int mapNode)
+    {
+        return _UIMapNodes[mapNode];
+    }
     void Start()
     {
         _currentMap = new Map();
-
+        _UIMapNodes = new List<MapNode>();
         for (int i = 0; i < _currentMap.Nodes.Count; i++)
         {
             for (int j = 0; j < _currentMap.Nodes[i].Count; j++)
@@ -42,9 +48,12 @@ public class MapVisualizer : MonoBehaviour
                         break;
                 }
                 
+                _UIMapNodes.Add(node);
             }
         }
     }
+    
+    
 
     public float GetHorizontalPosition(int index, int amount)
     {

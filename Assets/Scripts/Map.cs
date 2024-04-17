@@ -18,6 +18,23 @@ public class Map
         }
         return null;
     }
+    public int GetCumulativeIndex(IMapNode node)
+    {
+        int cumulativeIndex = 0;
+        
+        foreach (var nodeList in Nodes)
+        {
+            foreach (var mapNode in nodeList)
+            {
+                if (mapNode == node)
+                {
+                    return cumulativeIndex;
+                }
+                cumulativeIndex++;
+            }
+        }
+        return -1; // Or throw an exception: throw new InvalidOperationException("Node not found in the Nodes list");
+    }
     public Map()
     {
         Nodes = new List<List<IMapNode>>();

@@ -9,7 +9,21 @@ public class PersistenceManager
     private IPersistenceService _persistenceService;
 
     public ProgressData MyProgressData { get; set; }
-    public RunData MyCurrentRun { get; set; }
+    public RunData _myCurrentRun;
+    public RunData MyCurrentRun {
+        get
+        {
+            if (_myCurrentRun == null)
+            {
+                LoadRunData();
+            }
+            return _myCurrentRun;
+        }
+        set
+        {
+            _myCurrentRun = value;
+        }
+    }
 
     public static PersistenceManager Instance
     {
