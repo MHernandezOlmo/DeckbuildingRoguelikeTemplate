@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e0ddd52fe744fa468b6b49682203437, type: 3}
-  m_Name: Lagarto
+  m_Name: Character 1
   m_EditorClassIdentifier: 
-  id: 0
-  name: Lagarto
-  description: Lagartaso
-  icon: {fileID: 21300000, guid: d0acedc1662153a4487966c8626b151c, type: 3}
+  id: 1
+  name: 'C N 1 '
+  description: C D 1
+  icon: {fileID: 21300000, guid: 95f89b381bfc824468b11ce1e0de9eef, type: 3}
