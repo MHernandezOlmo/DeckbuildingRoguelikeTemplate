@@ -14,16 +14,28 @@ public class MapPlayerVisualizer : MonoBehaviour
     void Start()
     {
          int currentMapNodeID = PersistenceManager.Instance.MyCurrentRun._currentMapNodeID;
-         Map currentMap = _mapVisualizer.GetMap();
-         IMapNode currentMapNode = currentMap.GetNode(currentMapNodeID);
-         for (var i = 0; i < currentMapNode.ConnectedNodes.Count; i++)
+
+         if (currentMapNodeID >= 0)
          {
-             _mapVisualizer.GetMapNode(currentMap.GetCumulativeIndex(currentMapNode.ConnectedNodes[i])).EnableNode();
+             Map currentMap = _mapVisualizer.GetMap();
+             IMapNode currentMapNode = currentMap.GetNode(currentMapNodeID);
+             for (var i = 0; i < currentMapNode.ConnectedNodes.Count; i++)
+             {
+                 _mapVisualizer.GetMapNode(currentMap.GetCumulativeIndex(currentMapNode.ConnectedNodes[i])).EnableNode();
+             }
+         
+             MapNode currentNode = _mapVisualizer.GetMapNode(currentMapNodeID);
+         
+             transform.position = currentNode.gameObject.transform.position;    
+         }
+         else
+         {
+             MapNode currentNode = _mapVisualizer.GetMapNode(0);
+             transform.position = currentNode.gameObject.transform.position;
+             _mapVisualizer.GetMapNode(0).EnableNode();
          }
          
-         MapNode currentNode = _mapVisualizer.GetMapNode(currentMapNodeID);
          
-         transform.position = currentNode.gameObject.transform.position;
     }
 
     

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -19,6 +20,16 @@ public class MapVisualizer : MonoBehaviour
         return _currentMap;
     }
 
+    private void OnEnable()
+    {
+        MapNode.OnNodePicked += PickNode;
+    }
+
+    private void OnDisable()
+    {
+        MapNode.OnNodePicked -= PickNode;
+    }
+
     public MapNode GetMapNode(int mapNode)
     {
         return _UIMapNodes[mapNode];
@@ -27,6 +38,7 @@ public class MapVisualizer : MonoBehaviour
     {
         _currentMap = new Map();
         _UIMapNodes = new List<MapNode>();
+        int nodeCount=0;
         for (int i = 0; i < _currentMap.Nodes.Count; i++)
         {
             for (int j = 0; j < _currentMap.Nodes[i].Count; j++)
@@ -36,25 +48,49 @@ public class MapVisualizer : MonoBehaviour
                 switch (_currentMap.Nodes[i][j])
                 {
                     case StageBossNode:
-                        node.SetStageBossNode();
+                        node.SetStageBossNode(nodeCount);
                         break;
                     
                     case RestNode:
-                        node.SetRestNode();
+                        node.SetRestNode(nodeCount);
                         break;
                     
                     case BattleNode:
-                        node.SetBattleNode();
+                        node.SetBattleNode(nodeCount);
                         break;
                 }
+
+                nodeCount++;
                 
                 _UIMapNodes.Add(node);
             }
         }
     }
-    
-    
 
+
+    public void PickNode(int node)
+    {
+        
+        switch (_UIMapNodes[node]._type)
+        {
+            case MapNodes.Battle:
+                GameFlowEvents.LoadScene.Invoke("Battle");        
+                break;
+            
+            case MapNodes.Boss:
+
+                break;
+            
+            case MapNodes.Elite:
+                
+                break;
+            
+            case MapNodes.Rest:
+                
+                break;
+        }
+    }
+    
     public float GetHorizontalPosition(int index, int amount)
     {
         float horizontalSeparation = 1f;
