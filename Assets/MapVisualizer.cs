@@ -14,7 +14,6 @@ public class MapVisualizer : MonoBehaviour
     [SerializeField] private GameObject _mapNodePrefab;
     private Map _currentMap;
     [SerializeField] private List<MapNode> _UIMapNodes;
-    [SerializeField] private GameObject _playerIcon;
     public Map GetMap()
     {
         return _currentMap;

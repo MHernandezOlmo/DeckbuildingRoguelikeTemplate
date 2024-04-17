@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class MapPlayerVisualizer : MonoBehaviour
 {
-    [SerializeField] private MapVisualizer _mapVisualizer;   
+    [SerializeField] private MapVisualizer _mapVisualizer;
+    [SerializeField] private GameObject _cameraTarget;
     private void Awake()
     {
             
@@ -34,8 +35,10 @@ public class MapPlayerVisualizer : MonoBehaviour
              transform.position = currentNode.gameObject.transform.position;
              _mapVisualizer.GetMapNode(0).EnableNode();
          }
-         
-         
+
+         var pos = _cameraTarget.transform.position;
+         pos.y = transform.position.y;
+         _cameraTarget.transform.position = pos;
     }
 
     
