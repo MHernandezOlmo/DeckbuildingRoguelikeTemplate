@@ -9,7 +9,7 @@ public class RunData
     public GameState _gameState;
     public int _currentMapNodeID;
     public int _currentBattleID;
-    
+    public int _seed;
     public RunData(int selectedCharacterID)
     {
         _selectedCharacterID = selectedCharacterID;
@@ -17,6 +17,9 @@ public class RunData
         _gameState = GameState.Map;
         _currentBattleID = -1;
         _currentMapNodeID = -1;
+        string seedString = "myRandomSeed123";
+        _seed =seedString.GetHashCode();;
+
     }
     public void AddPickedRelic(int relicID)
     {

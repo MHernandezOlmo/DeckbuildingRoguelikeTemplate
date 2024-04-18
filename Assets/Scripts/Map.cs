@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using Random = System.Random;
 
 public class Map
 {
@@ -18,6 +20,20 @@ public class Map
         }
         return null;
     }
+    
+    private static Map _instance;
+    public static Map Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new Map();
+            }
+            return _instance;
+        }
+    }
+    
     public int GetCumulativeIndex(IMapNode node)
     {
         int cumulativeIndex = 0;
@@ -33,20 +49,21 @@ public class Map
                 cumulativeIndex++;
             }
         }
-        return -1; // Or throw an exception: throw new InvalidOperationException("Node not found in the Nodes list");
+        return -1; 
     }
     
-    public Map( int battleRoomsCount)
+    public Map()
     {
         Nodes = new List<List<IMapNode>>();
-
-        List<IMapNode> row0 = new List<IMapNode>(){new BattleNode(battleRoomsCount)};
-        List<IMapNode> row1 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
-        List<IMapNode> row2 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
-        List<IMapNode> row3 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
-        List<IMapNode> row4 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
+        int battleRoomsCount = GameDataController.Instance.BattleRoomRepository.GetAllBattleRooms().Count();
+        RandomManager.ResetMapRandomSeed();
+        List<IMapNode> row0 = new List<IMapNode>(){new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount))};
+        List<IMapNode> row1 = new List<IMapNode>(){new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount)), new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount))};
+        List<IMapNode> row2 = new List<IMapNode>(){new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount)), new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount)), new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount))};
+        List<IMapNode> row3 = new List<IMapNode>(){new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount)), new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount))};
+        List<IMapNode> row4 = new List<IMapNode>(){new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount)), new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount)), new BattleNode(RandomManager.GetRandomMapInt(0, battleRoomsCount))};
         List<IMapNode> row5 = new List<IMapNode>(){new RestNode(), new RestNode()};
-        List<IMapNode> row6 = new List<IMapNode>(){new StageBossNode()};
+        List<IMapNode> row6 = new List<IMapNode>(){new StageBossNode()}; 
         
         Nodes.Add(row0);
         Nodes.Add(row1);
@@ -67,7 +84,6 @@ public class Map
                     for (int k = 0; k < Nodes[nextRow].Count; k++)
                     {
                         Nodes[i][j].ConnectedNodes.Add(Nodes[nextRow][k]);
-                        
                     }    
                 }    
             }

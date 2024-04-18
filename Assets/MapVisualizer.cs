@@ -15,8 +15,7 @@ public class MapVisualizer : MonoBehaviour
     [SerializeField] private GameObject _mapNodePrefab;
     private Map _currentMap;
     [SerializeField] private List<MapNode> _UIMapNodes;
-
-    [SerializeField] private ScriptableObjectBattleRoomRepository _scriptableObjectBattleRoomRepository;
+    
     public Map GetMap()
     {
         return _currentMap;
@@ -38,7 +37,7 @@ public class MapVisualizer : MonoBehaviour
     }
     void Start()
     {
-        _currentMap = new Map(_scriptableObjectBattleRoomRepository.GetAllBattleRooms().Count());
+        _currentMap = Map.Instance;
         _UIMapNodes = new List<MapNode>();
         int nodeCount=0;
         for (int i = 0; i < _currentMap.Nodes.Count; i++)

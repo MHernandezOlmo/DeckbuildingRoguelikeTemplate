@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public interface IMapNode
@@ -15,10 +16,10 @@ public class BattleNode : IMapNode
     {
         return _battleRoomID;
     }
-    public BattleNode(int battleRoomsCount)
+    public BattleNode(int battleRoomID)
     {
-        
-        _battleRoomID = Random.Range(0,battleRoomsCount);
+        _battleRoomID = battleRoomID;
+        Debug.Log(battleRoomID);
     }
     public List<IMapNode> ConnectedNodes { get; set; } = new List<IMapNode>();
 }
