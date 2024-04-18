@@ -20,6 +20,18 @@ public class MainMenuSceneController : MonoBehaviour
         PersistenceManager.Instance.LoadAllData();
     }
 
+    public void Continue()
+    {
+        if (PersistenceManager.Instance.MyCurrentRun._gameState == GameState.Battle)
+        {
+            GameFlowEvents.LoadScene.Invoke("Battle");
+        }
+        else
+        {
+            GameFlowEvents.LoadScene.Invoke("Map");
+        }
+    }
+
     void Start()
     {
         

@@ -25,6 +25,11 @@ public class RunData
     {
         _pickedRelicsID.Add(relicID);
     }
+
+    public void SetGameState(GameState newGameState)
+    {
+        _gameState = newGameState;
+    }
 }
 
 public enum GameState

@@ -37,6 +37,8 @@ public class MapVisualizer : MonoBehaviour
     }
     void Start()
     {
+
+        PersistenceManager.Instance.MyCurrentRun._gameState = GameState.Map;
         _currentMap = Map.Instance;
         _UIMapNodes = new List<MapNode>();
         int nodeCount=0;

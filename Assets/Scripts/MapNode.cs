@@ -19,7 +19,6 @@ public class BattleNode : IMapNode
     public BattleNode(int battleRoomID)
     {
         _battleRoomID = battleRoomID;
-        Debug.Log(battleRoomID);
     }
     public List<IMapNode> ConnectedNodes { get; set; } = new List<IMapNode>();
 }

@@ -108,4 +108,10 @@ public class PersistenceManager
         MyCurrentRun = null;
         GameFlowEvents.LoadScene.Invoke("Menu");
     }
+
+    public void SetGameState(GameState newGameState)
+    {
+        _myCurrentRun.SetGameState(newGameState);
+        SaveRunData();
+    }
 }
