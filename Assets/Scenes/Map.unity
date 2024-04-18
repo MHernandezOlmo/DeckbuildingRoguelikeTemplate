@@ -172,6 +172,7 @@ MonoBehaviour:
   _restSprite: {fileID: 21300000, guid: 1c081480dd96a3f488d83108a8788284, type: 3}
   _mapNodePrefab: {fileID: 2388889030937607849, guid: d3b4479a2947f914dbb3411979c17001, type: 3}
   _UIMapNodes: []
+  _scriptableObjectBattleRoomRepository: {fileID: 1939780679}
 --- !u!1001 &426387952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,6 +625,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1939780678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1939780680}
+  - component: {fileID: 1939780679}
+  m_Layer: 0
+  m_Name: SOBattleRoomsRepository
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1939780679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939780678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932da7c48d8a1d54cb9da7943baa1bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _battleRooms:
+  - {fileID: 11400000, guid: cfc725583146f494f8652622d35ce8b8, type: 2}
+  - {fileID: 11400000, guid: b93e72c9860eb17469c4aa30245f923a, type: 2}
+  - {fileID: 11400000, guid: 95fbff24021b15645aae11efc29b7735, type: 2}
+  - {fileID: 11400000, guid: 4dc70fe65639ea64f8f265c993f2484a, type: 2}
+  - {fileID: 11400000, guid: 6e86aa06b66e20a408f101a05d65a238, type: 2}
+  - {fileID: 11400000, guid: a95dd940011daa6438c26ff7dc588c04, type: 2}
+  - {fileID: 11400000, guid: 5b2045ded612cd44bbff679584716bc9, type: 2}
+  - {fileID: 11400000, guid: 87f3ce3660efc0c4ca96aeecc9350b15, type: 2}
+  - {fileID: 11400000, guid: b36e083d6b79c614ca808502ca550704, type: 2}
+  - {fileID: 11400000, guid: b7fb084d4ae9da44f8edcff422bb21f6, type: 2}
+--- !u!4 &1939780680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939780678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.34911594, y: -0.20946957, z: 0.016821023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -633,3 +689,4 @@ SceneRoots:
   - {fileID: 417100343}
   - {fileID: 614741879}
   - {fileID: 1228426679}
+  - {fileID: 1939780680}

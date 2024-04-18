@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class MapVisualizer : MonoBehaviour
     [SerializeField] private GameObject _mapNodePrefab;
     private Map _currentMap;
     [SerializeField] private List<MapNode> _UIMapNodes;
+
+    [SerializeField] private ScriptableObjectBattleRoomRepository _scriptableObjectBattleRoomRepository;
     public Map GetMap()
     {
         return _currentMap;
@@ -35,7 +38,7 @@ public class MapVisualizer : MonoBehaviour
     }
     void Start()
     {
-        _currentMap = new Map();
+        _currentMap = new Map(_scriptableObjectBattleRoomRepository.GetAllBattleRooms().Count());
         _UIMapNodes = new List<MapNode>();
         int nodeCount=0;
         for (int i = 0; i < _currentMap.Nodes.Count; i++)
@@ -74,6 +77,8 @@ public class MapVisualizer : MonoBehaviour
         {
             case MapNodes.Battle:
                 PersistenceManager.Instance.SelectBattle(node);
+                int battleRoomID = ((BattleNode)_currentMap.GetNode(node)).GetBattleRoomID();
+                print(battleRoomID);
                 GameFlowEvents.LoadScene.Invoke("Battle");        
                 break;
             

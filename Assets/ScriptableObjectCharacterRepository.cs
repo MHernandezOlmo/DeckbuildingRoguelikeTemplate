@@ -5,6 +5,7 @@ public class ScriptableObjectCharacterRepository : MonoBehaviour, ICharacterRepo
 {
     
     [SerializeField] private List<SOCharacter> _characters;
+    [SerializeField] private List<GameObject> _charactersPrefabs;
     
 
     public ICharacterData GetCharacterById(int id)
@@ -15,5 +16,9 @@ public class ScriptableObjectCharacterRepository : MonoBehaviour, ICharacterRepo
     public IEnumerable<ICharacterData> GetAllCharacters()
     {
         return _characters;
+    }    
+    public IEnumerable<GameObject> GetAllCharacterPrefabs()
+    {
+        return _charactersPrefabs;
     }
 }

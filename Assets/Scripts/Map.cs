@@ -35,15 +35,16 @@ public class Map
         }
         return -1; // Or throw an exception: throw new InvalidOperationException("Node not found in the Nodes list");
     }
-    public Map()
+    
+    public Map( int battleRoomsCount)
     {
         Nodes = new List<List<IMapNode>>();
 
-        List<IMapNode> row0 = new List<IMapNode>(){new BattleNode()};
-        List<IMapNode> row1 = new List<IMapNode>(){new BattleNode(), new BattleNode()};
-        List<IMapNode> row2 = new List<IMapNode>(){new BattleNode(), new BattleNode(), new BattleNode()};
-        List<IMapNode> row3 = new List<IMapNode>(){new BattleNode(), new BattleNode()};
-        List<IMapNode> row4 = new List<IMapNode>(){new BattleNode(), new BattleNode(), new BattleNode()};
+        List<IMapNode> row0 = new List<IMapNode>(){new BattleNode(battleRoomsCount)};
+        List<IMapNode> row1 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
+        List<IMapNode> row2 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
+        List<IMapNode> row3 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
+        List<IMapNode> row4 = new List<IMapNode>(){new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount), new BattleNode(battleRoomsCount)};
         List<IMapNode> row5 = new List<IMapNode>(){new RestNode(), new RestNode()};
         List<IMapNode> row6 = new List<IMapNode>(){new StageBossNode()};
         
