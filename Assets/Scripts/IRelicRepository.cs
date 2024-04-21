@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IRelicRepository
 {
-    IRelicData GetRelicById(string id);
+    IRelicData GetRelicById(int id);
     IEnumerable<IRelicData> GetAllRelics();
 
     IEnumerable<IRelicData> GetRandomUniqueRelics(int count);

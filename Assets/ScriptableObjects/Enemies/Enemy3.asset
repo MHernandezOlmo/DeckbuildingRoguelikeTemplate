@@ -16,4 +16,4 @@ MonoBehaviour:
   name: E N 3
   description: E D 3
   icon: {fileID: 21300000, guid: e4d3ce102bca4cd4b8d879893e683d9e, type: 3}
-  maxHP: 70
+  maxHP: 80

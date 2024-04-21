@@ -1,4 +1,5 @@
 using System;using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine.Serialization;
 
 [System.Serializable]
@@ -10,17 +11,37 @@ public class RunData
     public int _currentMapNodeID;
     public int _currentBattleID;
     public int _seed;
+    public List<int> _pickedItemsID;
     public RunData(int selectedCharacterID)
     {
         _selectedCharacterID = selectedCharacterID;
+        switch (_selectedCharacterID)
+        {
+            case 0:
+                _pickedItemsID = new List<int>(){1,2,3};
+                break;
+                
+            case 1:
+                _pickedItemsID = new List<int>(){0,1,2,3};
+                break;
+            
+            case 2:
+                _pickedItemsID = new List<int>(){4,3,2};
+                break;
+            
+            case 3:
+                _pickedItemsID = new List<int>(){1,1,1,1};
+                break;
+        }
         _pickedRelicsID = new List<int>();
         _gameState = GameState.Map;
         _currentBattleID = -1;
         _currentMapNodeID = -1;
         string seedString = "myRandomSeed123";
-        _seed =seedString.GetHashCode();;
-
+        _seed =seedString.GetHashCode();
     }
+    
+
     public void AddPickedRelic(int relicID)
     {
         _pickedRelicsID.Add(relicID);

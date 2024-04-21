@@ -45,7 +45,7 @@ public class SOEnemy : ScriptableObject
 
     public int MaxHP
     {
-        get { return MaxHP; }
+        get { return maxHP; }
     }
     public virtual void ActivateEffect(GameObject player)
     {

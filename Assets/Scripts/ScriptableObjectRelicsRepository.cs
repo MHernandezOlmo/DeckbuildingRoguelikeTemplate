@@ -6,10 +6,11 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
     
     [SerializeField] private List<SORelic> _relics;
     
-    public IRelicData GetRelicById(string id)
+    public IRelicData GetRelicById(int id)
     {
-        throw new System.NotImplementedException();
+        return _relics[id];
     }
+    
 
     public IEnumerable<IRelicData> GetAllRelics()
     {
