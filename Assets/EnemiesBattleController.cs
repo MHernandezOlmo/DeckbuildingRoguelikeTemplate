@@ -43,7 +43,7 @@ public class EnemiesBattleController : MonoBehaviour
     {
         for (var i = 0; i < _enemies.Count; i++)
         {
-            _enemies[i].ReceiveDamage(10);
+            _enemies[i].ReceiveDamage(damage);
         }
     }
     
