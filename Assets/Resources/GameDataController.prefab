@@ -111,6 +111,56 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 87f3ce3660efc0c4ca96aeecc9350b15, type: 2}
   - {fileID: 11400000, guid: b36e083d6b79c614ca808502ca550704, type: 2}
   - {fileID: 11400000, guid: b7fb084d4ae9da44f8edcff422bb21f6, type: 2}
+--- !u!1 &4984411966745097962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2993449033761764035}
+  - component: {fileID: 6685598868367343917}
+  m_Layer: 0
+  m_Name: ItemsRepository
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2993449033761764035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984411966745097962}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181317370885587752}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6685598868367343917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4984411966745097962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc9868bfbc44c66458639288e953e355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 11400000, guid: c13abcac613104c4e91a70138c3b22fe, type: 2}
+  - {fileID: 11400000, guid: d5df771a1ce44ad4e9b0ede82fb2101c, type: 2}
+  - {fileID: 11400000, guid: 8ba98d36c2c0f6746b72220d9cb9f902, type: 2}
+  - {fileID: 11400000, guid: aba643e1121c209418a98e21653831f3, type: 2}
+  - {fileID: 11400000, guid: cd3b6c7bc1ccdd7438a152ae7b5b1744, type: 2}
 --- !u!1 &5364894014339660606
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +302,7 @@ Transform:
   - {fileID: 674789440749460385}
   - {fileID: 4479769972994298964}
   - {fileID: 7006469893551422337}
+  - {fileID: 2993449033761764035}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3990578471829811675
@@ -270,3 +321,4 @@ MonoBehaviour:
   _relicRepository: {fileID: 3537889737725802226}
   _battleRoomRepository: {fileID: 5207725036035021064}
   _enemyRespository: {fileID: 4193973192848797346}
+  _itemsRespository: {fileID: 6685598868367343917}
