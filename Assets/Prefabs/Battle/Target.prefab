@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8526668409437129723}
   - component: {fileID: 5818423551383626131}
+  - component: {fileID: 8546250410926110710}
   m_Layer: 0
   m_Name: SecondRing
   m_TagString: Untagged
@@ -67,6 +68,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.27
+--- !u!114 &8546250410926110710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262818330362652077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118992237232c43468503930775258ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderPriority: 2
 --- !u!1 &3345461803418581244
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8256410768150331378}
   - component: {fileID: 3339874792274473538}
+  - component: {fileID: 5336743134429860843}
   m_Layer: 0
   m_Name: FourthRing
   m_TagString: Untagged
@@ -134,6 +149,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.45
+--- !u!114 &5336743134429860843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3345461803418581244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118992237232c43468503930775258ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderPriority: 0
 --- !u!1 &4846975474847760492
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4120978933419226192}
   - component: {fileID: 5843913698522770788}
+  - component: {fileID: 8471998008073512341}
   m_Layer: 0
   m_Name: FirstRing
   m_TagString: Untagged
@@ -201,6 +230,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.18
+--- !u!114 &8471998008073512341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4846975474847760492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118992237232c43468503930775258ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderPriority: 3
 --- !u!1 &6307758461262437850
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7003478485433364176}
   - component: {fileID: 7121884892410749061}
+  - component: {fileID: 821775422911557104}
   m_Layer: 0
   m_Name: InnerCircle
   m_TagString: Untagged
@@ -268,6 +311,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
+--- !u!114 &821775422911557104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307758461262437850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118992237232c43468503930775258ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderPriority: 4
 --- !u!1 &7150769571015972314
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,6 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2021699488451025731}
   - component: {fileID: 3248381587483245354}
+  - component: {fileID: 7030315141291562677}
   m_Layer: 0
   m_Name: ThirdRing
   m_TagString: Untagged
@@ -335,6 +392,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.36
+--- !u!114 &7030315141291562677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150769571015972314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 118992237232c43468503930775258ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderPriority: 1
 --- !u!1 &7343983163638747051
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class InventoryController : MonoBehaviour
             yield return new WaitForSeconds(2);
             _firing = false;
             _canFire = true;
-            ReloadWeapon();
+            //ReloadWeapon();
         }
     }
 
@@ -51,6 +51,7 @@ public class InventoryController : MonoBehaviour
     {
         Destroy(_currentWeapon.gameObject);
         _hand.RemoveAt(0);
+        RefreshHandVisualization();
         if (_hand.Count > 0)
         {
             CreateCurrentWeapon();   
@@ -63,9 +64,16 @@ public class InventoryController : MonoBehaviour
         _currentWeapon = Instantiate(GameDataController.Instance.ItemRepository.GetItemPrefabByID(nextWeapon)).GetComponent<WeaponBehaviour>();
     }
     
-
+    void DestroyAllChildren(GameObject parent)
+    {
+        foreach (Transform child in parent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     public void RefreshHandVisualization()
     {
+        DestroyAllChildren(_inventoryHolder);   
         for (var i = 0; i < _hand.Count; i++)
         {
             Instantiate(_inventoryUIWidget, _inventoryHolder.transform).GetComponent<ItemUIRepresentation>().SetItem(GameDataController.Instance.ItemRepository.GetItemById(_hand[i]));

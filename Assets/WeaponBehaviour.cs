@@ -9,9 +9,11 @@ public class WeaponBehaviour : MonoBehaviour
     [SerializeField] private bool _firing;
     [SerializeField] private Color _enabledColor;
     [SerializeField] private Color _disabledColor;
+    private ItemBehaviour _itemBehaviour;
     
     private void Start()
     {
+        _itemBehaviour = GetComponentInChildren<ItemBehaviour>();
         _animator.speed = 0;
         _animator.GetComponent<SpriteRenderer>().color = _disabledColor;
     }
@@ -28,6 +30,7 @@ public class WeaponBehaviour : MonoBehaviour
     {
         _firing = false;
         _animator.speed = 0;
+         
     }
 
     private void Update()
