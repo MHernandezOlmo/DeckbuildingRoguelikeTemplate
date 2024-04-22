@@ -288,6 +288,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1286811919}
   _battleController: {fileID: 307558712}
+  _inventory: {fileID: 1075662261}
+  _combatAreaController: {fileID: 1283186115}
 --- !u!4 &67600330
 Transform:
   m_ObjectHideFlags: 0
@@ -315,6 +317,7 @@ GameObject:
   - component: {fileID: 160129721}
   - component: {fileID: 160129720}
   - component: {fileID: 160129719}
+  - component: {fileID: 160129722}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -385,19 +388,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 160129720}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 67600329}
-        m_TargetAssemblyTypeName: BattleState, Assembly-CSharp
-        m_MethodName: DealDamageToAllEnemies
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 30
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &160129720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +427,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160129717}
   m_CullTransparentMesh: 1
+--- !u!114 &160129722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160129717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1075662261}
+          m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+          m_MethodName: StartFiring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1075662261}
+          m_TargetAssemblyTypeName: InventoryController, Assembly-CSharp
+          m_MethodName: StopFiring
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &282122772
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,7 +571,6 @@ RectTransform:
   - {fileID: 529797939}
   - {fileID: 1211273009}
   - {fileID: 951936578}
-  - {fileID: 1283186112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1522,7 +1557,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 76a78a3928a6d6445bb11912330dcffa, type: 3}
   m_Color: {r: 0.01886791, g: 0.00845496, b: 0.00845496, a: 0.77254903}
   m_FlipX: 0
@@ -1809,16 +1844,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283186111}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 282122776}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 960, y: 0}
   m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1283186114
@@ -2153,6 +2188,7 @@ SceneRoots:
   - {fileID: 1286811918}
   - {fileID: 307558713}
   - {fileID: 1575088683}
+  - {fileID: 1283186112}
   - {fileID: 1359163779}
   - {fileID: 1075662260}
   - {fileID: 67600330}

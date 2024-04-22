@@ -161,6 +161,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8ba98d36c2c0f6746b72220d9cb9f902, type: 2}
   - {fileID: 11400000, guid: aba643e1121c209418a98e21653831f3, type: 2}
   - {fileID: 11400000, guid: cd3b6c7bc1ccdd7438a152ae7b5b1744, type: 2}
+  _itemPrefabs:
+  - {fileID: 5809057776778333947, guid: 940a87783babd0e499adcb6c343e1359, type: 3}
+  - {fileID: 6393565212942086813, guid: f1b195c55d455724194a82928b7d1120, type: 3}
+  - {fileID: 6393565212942086813, guid: feb978d489e40e84b8d8efe813353613, type: 3}
+  - {fileID: 6393565212942086813, guid: 752f8e8b85aa3b64b8a66401fc8b63f8, type: 3}
+  - {fileID: 6393565212942086813, guid: 752f8e8b85aa3b64b8a66401fc8b63f8, type: 3}
 --- !u!1 &5364894014339660606
 GameObject:
   m_ObjectHideFlags: 0

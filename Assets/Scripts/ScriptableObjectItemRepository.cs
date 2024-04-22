@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScriptableObjectItemRepository : MonoBehaviour, IItemRepository
 {
     [SerializeField] private List<SOItem> _items;
+    [SerializeField] private List<GameObject> _itemPrefabs;
 
     public IItemData GetItemById(int id)
     {
@@ -14,6 +15,11 @@ public class ScriptableObjectItemRepository : MonoBehaviour, IItemRepository
     public IEnumerable<IItemData> GetAllItems()
     {
         return _items.ToList();
+    }
+
+    public GameObject GetItemPrefabByID(int id)
+    {
+        return _itemPrefabs[id];
     }
     
 }
