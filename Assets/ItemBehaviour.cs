@@ -1,73 +1,113 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class ItemBehaviour : MonoBehaviour
 {
+    private Dictionary<GameObject, List<CollisionData>> activeTargetCollisions = new Dictionary<GameObject, List<CollisionData>>();
 
-    private Dictionary<GameObject, List<int>> activeTargetCollisions = new Dictionary<GameObject, List<int>>();
+    private class CollisionData
+    {
+        public int Priority;
+        public Vector2 ContactPoint;
+
+        public CollisionData(int priority, Vector2 contactPoint)
+        {
+            Priority = priority;
+            ContactPoint = contactPoint;
+        }
+    }
+
     private void Start()
     {
-        activeTargetCollisions = new Dictionary<GameObject, List<int>>();
+        activeTargetCollisions = new Dictionary<GameObject, List<CollisionData>>();
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        TargetColliderPriority tcp = col.GetComponent<TargetColliderPriority>();
-        
+        TargetColliderPriority tcp = col.gameObject.GetComponent<TargetColliderPriority>();
+        GameObject parent = col.gameObject.transform.parent.gameObject;
+        Vector2 contactPoint = col.contacts[0].point;
 
-        GameObject parent =col.gameObject.transform.parent.gameObject;
         if (!activeTargetCollisions.ContainsKey(parent))
         {
-            activeTargetCollisions[parent] = new List<int>();
+            activeTargetCollisions[parent] = new List<CollisionData>();
         }
-        activeTargetCollisions[parent].Add(tcp.GetColliderPriority());
 
+        activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint));
     }
 
-    
-    private void OnTriggerExit2D(Collider2D col)
+    private void OnCollisionExit2D(Collision2D col)
     {
-        TargetColliderPriority tcp = col.GetComponent<TargetColliderPriority>();
+        TargetColliderPriority tcp = col.gameObject.GetComponent<TargetColliderPriority>();
         GameObject parent = col.gameObject.transform.parent.gameObject;
+
         if (activeTargetCollisions.ContainsKey(parent))
         {
-            activeTargetCollisions[parent].Remove(tcp.GetColliderPriority());
-            if (activeTargetCollisions[parent].Count == 0)
+            var entryToRemove = activeTargetCollisions[parent].FirstOrDefault(d => d.Priority == tcp.GetColliderPriority());
+            if (entryToRemove != null)
             {
-                activeTargetCollisions.Remove(parent);
+                activeTargetCollisions[parent].Remove(entryToRemove);
+                if (activeTargetCollisions[parent].Count == 0)
+                {
+                    activeTargetCollisions.Remove(parent);
+                }
             }
         }
     }
-    
-    public Dictionary<GameObject, int> GetCurrentTargetsHighestPriority()
+    private void OnCollisionStay2D(Collision2D col)
     {
-        Dictionary<GameObject, int> highestPriorities = new Dictionary<GameObject, int>();
-        foreach (var targetEntry in activeTargetCollisions)
-        {
-            int highestPriority = targetEntry.Value.Max(); 
-            highestPriorities[targetEntry.Key] = highestPriority;
-        }
-        return highestPriorities;
+        AddOrUpdateCollision(col);
     }
-    
+    private void AddOrUpdateCollision(Collision2D col)
+    {
+        TargetColliderPriority tcp = col.gameObject.GetComponent<TargetColliderPriority>();
+        GameObject parent = col.gameObject.transform.parent.gameObject;
+        Vector2 contactPoint = col.contacts[0].point; // Gets the first contact point
+
+        if (!activeTargetCollisions.ContainsKey(parent))
+        {
+            activeTargetCollisions[parent] = new List<CollisionData>();
+        }
+
+        // Check if there is already a collision entry with the same priority
+        var existingCollision = activeTargetCollisions[parent]
+            .FirstOrDefault(c => c.Priority == tcp.GetColliderPriority());
+
+        if (existingCollision != null)
+        {
+            // Update the contact point of the existing collision
+            existingCollision.ContactPoint = contactPoint;
+        }
+        else
+        {
+            // Add a new collision data entry
+            activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint));
+        }
+    }
     public void LogCurrentCollisions()
     {
-        var targetsAndPriorities = GetCurrentTargetsHighestPriority();
-        if (targetsAndPriorities.Count == 0)
+        if (activeTargetCollisions.Count == 0)
         {
             Debug.Log("No current collisions.");
             return;
         }
 
         string logMessage = "Current Collisions and Highest Priorities:\n";
-        foreach (KeyValuePair<GameObject, int> entry in targetsAndPriorities)
+        foreach (var targetEntry in activeTargetCollisions)
         {
-            logMessage += $"Target: {entry.Key.name}, Highest Priority: {entry.Value}\n";
+            // Find the CollisionData with the highest priority
+            var highestPriorityCollision = targetEntry.Value.OrderByDescending(c => c.Priority).First();
+
+            logMessage += $"Target: {targetEntry.Key.name}, " +
+                          $"Highest Priority: {highestPriorityCollision.Priority}, " +
+                          $"Contact Point: {highestPriorityCollision.ContactPoint}\n";
+
+            // Optional: Instantiate a marker at the highest priority contact point
+            Instantiate(new GameObject(), highestPriorityCollision.ContactPoint, quaternion.identity).name = "CP (Highest Priority)";
         }
+
         Debug.Log(logMessage);
     }
 }

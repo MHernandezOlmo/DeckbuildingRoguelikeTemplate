@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8526668409437129723}
   - component: {fileID: 5818423551383626131}
   - component: {fileID: 8546250410926110710}
-  m_Layer: 0
+  - component: {fileID: 5151514131368690370}
+  m_Layer: 6
   m_Name: SecondRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +63,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -81,6 +82,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderPriority: 2
+--- !u!50 &5151514131368690370
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262818330362652077}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &3345461803418581244
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +120,8 @@ GameObject:
   - component: {fileID: 8256410768150331378}
   - component: {fileID: 3339874792274473538}
   - component: {fileID: 5336743134429860843}
-  m_Layer: 0
+  - component: {fileID: 6764563141213680634}
+  m_Layer: 6
   m_Name: FourthRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +172,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -162,6 +191,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderPriority: 0
+--- !u!50 &6764563141213680634
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3345461803418581244}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &4846975474847760492
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +229,8 @@ GameObject:
   - component: {fileID: 4120978933419226192}
   - component: {fileID: 5843913698522770788}
   - component: {fileID: 8471998008073512341}
-  m_Layer: 0
+  - component: {fileID: 5077504739408307561}
+  m_Layer: 6
   m_Name: FirstRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +281,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -243,6 +300,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderPriority: 3
+--- !u!50 &5077504739408307561
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4846975474847760492}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &6307758461262437850
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +338,8 @@ GameObject:
   - component: {fileID: 7003478485433364176}
   - component: {fileID: 7121884892410749061}
   - component: {fileID: 821775422911557104}
-  m_Layer: 0
+  - component: {fileID: 2039941402571294468}
+  m_Layer: 6
   m_Name: InnerCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -305,7 +390,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -324,6 +409,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderPriority: 4
+--- !u!50 &2039941402571294468
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6307758461262437850}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &7150769571015972314
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +447,8 @@ GameObject:
   - component: {fileID: 2021699488451025731}
   - component: {fileID: 3248381587483245354}
   - component: {fileID: 7030315141291562677}
-  m_Layer: 0
+  - component: {fileID: 1042685800051020222}
+  m_Layer: 6
   m_Name: ThirdRing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +499,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -405,6 +518,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colliderPriority: 1
+--- !u!50 &1042685800051020222
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150769571015972314}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 10
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &7343983163638747051
 GameObject:
   m_ObjectHideFlags: 0
