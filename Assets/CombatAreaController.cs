@@ -28,6 +28,7 @@ public class CombatAreaController : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             GameObject newTarget = Instantiate(_targetPrefab, _targetHolder);
+            newTarget.name = $"Target {i}";
             
             bool positionFound = false;
             int attempts = 0;

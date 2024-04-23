@@ -18,6 +18,11 @@ public class WeaponBehaviour : MonoBehaviour
         _animator.GetComponent<SpriteRenderer>().color = _disabledColor;
     }
 
+    public void GetCurrentTargetsHighestPriority()
+    {
+        _itemBehaviour.LogCurrentCollisions();
+    }
+
     public void StartFiring()
     {
         _animator.gameObject.SetActive(true);

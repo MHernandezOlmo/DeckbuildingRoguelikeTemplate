@@ -14,7 +14,7 @@ public class InventoryController : MonoBehaviour
     void Start()
     {
         _currentCombatInventory = PersistenceManager.Instance.MyCurrentRun._pickedItemsID;
-        _hand = _currentCombatInventory;
+        _hand = new List<int>( _currentCombatInventory);
         ShuffleHand();
         _canFire = true;
         RefreshHandVisualization();
@@ -40,6 +40,7 @@ public class InventoryController : MonoBehaviour
 
         IEnumerator CrWaitAndStopFiring()
         {
+            _currentWeapon.GetCurrentTargetsHighestPriority();
             yield return new WaitForSeconds(2);
             _firing = false;
             _canFire = true;
@@ -60,7 +61,6 @@ public class InventoryController : MonoBehaviour
     public void CreateCurrentWeapon()
     {
         int nextWeapon = _hand[0];
-        print($"Mira, el arma {nextWeapon}");
         _currentWeapon = Instantiate(GameDataController.Instance.ItemRepository.GetItemPrefabByID(nextWeapon)).GetComponent<WeaponBehaviour>();
     }
     
