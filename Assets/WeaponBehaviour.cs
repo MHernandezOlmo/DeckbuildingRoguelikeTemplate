@@ -18,9 +18,9 @@ public class WeaponBehaviour : MonoBehaviour
         _animator.GetComponent<SpriteRenderer>().color = _disabledColor;
     }
 
-    public void GetCurrentTargetsHighestPriority()
+    public List<Vector3> GetCurrentTargetsHighestPriority()
     {
-        _itemBehaviour.LogCurrentCollisions();
+        return _itemBehaviour.GetCurrentTargetsWithHighestPriority();
     }
 
     public void StartFiring()
@@ -35,7 +35,6 @@ public class WeaponBehaviour : MonoBehaviour
     {
         _firing = false;
         _animator.speed = 0;
-         
     }
 
     private void Update()

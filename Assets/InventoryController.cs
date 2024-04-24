@@ -11,8 +11,12 @@ public class InventoryController : MonoBehaviour
     private WeaponBehaviour _currentWeapon;
     private bool _canFire;
     private bool _firing;
+    [SerializeField] private GameObject bulletPrefab;
+    private List<GameObject> _targets;
+
     void Start()
     {
+        _targets = new List<GameObject>();
         _currentCombatInventory = PersistenceManager.Instance.MyCurrentRun._pickedItemsID;
         _hand = new List<int>( _currentCombatInventory);
         ShuffleHand();
@@ -40,16 +44,22 @@ public class InventoryController : MonoBehaviour
 
         IEnumerator CrWaitAndStopFiring()
         {
-            _currentWeapon.GetCurrentTargetsHighestPriority();
+            foreach (var hitPoint in _currentWeapon.GetCurrentTargetsHighestPriority())
+            {
+                yield return new WaitForSeconds(0.2f);
+                _targets.Add(Instantiate(bulletPrefab,hitPoint, Quaternion.identity));
+            }
             yield return new WaitForSeconds(2);
             _firing = false;
             _canFire = true;
-            //ReloadWeapon();
+            ReloadWeapon();
         }
     }
 
     public void ReloadWeapon()
     {
+        ClearTargets();
+        FindObjectOfType<CombatAreaController>().RefreshTargets();
         Destroy(_currentWeapon.gameObject);
         _hand.RemoveAt(0);
         RefreshHandVisualization();
@@ -58,6 +68,16 @@ public class InventoryController : MonoBehaviour
             CreateCurrentWeapon();   
         }
     }
+
+    private void ClearTargets()
+    {
+        for (var i = 0; i < _targets.Count; i++)
+        {
+            Destroy(_targets[i].gameObject);
+        }
+        _targets.Clear();
+    }
+
     public void CreateCurrentWeapon()
     {
         int nextWeapon = _hand[0];

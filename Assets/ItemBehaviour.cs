@@ -6,7 +6,6 @@ using UnityEngine;
 public class ItemBehaviour : MonoBehaviour
 {
     private Dictionary<GameObject, List<CollisionData>> activeTargetCollisions = new Dictionary<GameObject, List<CollisionData>>();
-
     private class CollisionData
     {
         public int Priority;
@@ -86,12 +85,13 @@ public class ItemBehaviour : MonoBehaviour
             activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint));
         }
     }
-    public void LogCurrentCollisions()
+    public List<Vector3> GetCurrentTargetsWithHighestPriority()
     {
+        List<Vector3> hitPoints = new List<Vector3>();
         if (activeTargetCollisions.Count == 0)
         {
             Debug.Log("No current collisions.");
-            return;
+            return hitPoints;
         }
 
         string logMessage = "Current Collisions and Highest Priorities:\n";
@@ -103,11 +103,8 @@ public class ItemBehaviour : MonoBehaviour
             logMessage += $"Target: {targetEntry.Key.name}, " +
                           $"Highest Priority: {highestPriorityCollision.Priority}, " +
                           $"Contact Point: {highestPriorityCollision.ContactPoint}\n";
-
-            // Optional: Instantiate a marker at the highest priority contact point
-            Instantiate(new GameObject(), highestPriorityCollision.ContactPoint, quaternion.identity).name = "CP (Highest Priority)";
+            hitPoints.Add(highestPriorityCollision.ContactPoint);
         }
-
-        Debug.Log(logMessage);
+        return hitPoints;
     }
 }
