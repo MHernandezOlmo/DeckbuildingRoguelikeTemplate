@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffb03f302a2adeb408d3cf17614e947b, type: 3}
-  m_Name: Enemy3
+  m_Script: {fileID: 11500000, guid: 2d7bd7a169e06cd43ac4a69afd6e5231, type: 3}
+  m_Name: Status Effect 2
   m_EditorClassIdentifier: 
-  id: 3
-  name: E N 3
-  description: E D 3
-  icon: {fileID: 21300000, guid: adeb42a493ca6d6459a475f7bbba63d9, type: 3}
-  maxHP: 80
+  id: 2
+  name: SE N 2
+  description: SE D 2
+  icon: {fileID: 21300000, guid: a0c7506d8c308084f93a7d4000cbd667, type: 3}

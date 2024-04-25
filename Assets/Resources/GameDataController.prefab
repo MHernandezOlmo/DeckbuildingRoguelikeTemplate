@@ -274,6 +274,56 @@ MonoBehaviour:
   - {fileID: 223002348546785264, guid: 45657ccdc8968884db56e2ef204e1834, type: 3}
   - {fileID: 4831151324050980395, guid: dfbfff21435a99b44b3a078c4cbe8e84, type: 3}
   - {fileID: 7706935767364503517, guid: 60454bb1e94ae744f83bbb97d68bd57a, type: 3}
+--- !u!1 &8339441202833654998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2522043773162874720}
+  - component: {fileID: 1900313851607900602}
+  m_Layer: 0
+  m_Name: StatusEffectsRepository
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2522043773162874720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339441202833654998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181317370885587752}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1900313851607900602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339441202833654998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435a6b20138d11b4a82a34b7613a05b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statusEffects:
+  - {fileID: 11400000, guid: f344090bafecb54448550ad16cba933e, type: 2}
+  - {fileID: 11400000, guid: 3cb21598f80116e40997c67dec56b39b, type: 2}
+  - {fileID: 11400000, guid: cb4980588939ca2479e38d88483bdd57, type: 2}
+  - {fileID: 11400000, guid: 276c700384af97849ac830d8272a22c2, type: 2}
+  _statusEffectPrefabs: []
 --- !u!1 &8345977804407552468
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +359,7 @@ Transform:
   - {fileID: 4479769972994298964}
   - {fileID: 7006469893551422337}
   - {fileID: 2993449033761764035}
+  - {fileID: 2522043773162874720}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3990578471829811675

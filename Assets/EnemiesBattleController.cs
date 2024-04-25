@@ -7,8 +7,13 @@ using UnityEngine;
 
 public class EnemiesBattleController : MonoBehaviour
 {
+
     private List<BattleEnemy> _enemies;
 
+    public IEnumerable<GameCharacter> GetEnemies()
+    {
+        return _enemies;
+    }
     private void OnEnable()
     {
         BattleEnemy.OnEnemyCreated += AddNewEnemy;

@@ -10,12 +10,15 @@ public class GameDataController : MonoBehaviour
     [SerializeField] private ScriptableObjectBattleRoomRepository _battleRoomRepository;
     [SerializeField] private ScriptableObjectEnemyRespository _enemyRespository;
     [SerializeField] private ScriptableObjectItemRepository _itemsRespository;
+    [SerializeField] private ScriptableObjectStatusEffectRepository _statusEffectRepository;
 
     public ScriptableObjectCharacterRepository CharacterRepository => _characterRepository;
     public ScriptableObjectRelicsRepository RelicRepository => _relicRepository;
     public ScriptableObjectBattleRoomRepository BattleRoomRepository => _battleRoomRepository;
     public ScriptableObjectEnemyRespository EnemyRespository => _enemyRespository;
     public ScriptableObjectItemRepository ItemRepository => _itemsRespository;
+
+    public ScriptableObjectStatusEffectRepository StatusEffectRepository => _statusEffectRepository;
 
 
     public static GameDataController Instance

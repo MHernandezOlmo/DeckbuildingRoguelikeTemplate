@@ -15,5 +15,5 @@ MonoBehaviour:
   id: 1
   name: E N 1
   description: E D 1
-  icon: {fileID: 21300000, guid: 703bb0d5af2e9f44e977ff2662670035, type: 3}
+  icon: {fileID: 21300000, guid: adeb42a493ca6d6459a475f7bbba63d9, type: 3}
   maxHP: 40
