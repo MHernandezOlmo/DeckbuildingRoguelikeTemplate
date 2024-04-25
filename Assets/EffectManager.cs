@@ -1,4 +1,6 @@
 using System;using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class EffectManager
@@ -6,12 +8,43 @@ public class EffectManager
     private static EffectManager _instance;
 
     private Dictionary<GameCharacter, List<ActiveStatusEffect>> _characterEffects;
+
+    public List<ActiveStatusEffect> GetMyEffects(GameCharacter character)
+    {
+        return _characterEffects[character];
+    }
     public static Action RefreshStatusEffect;
     private EffectManager()
     {
         _characterEffects = new Dictionary<GameCharacter, List<ActiveStatusEffect>>();
     }
-    
+    private void LogCharacterEffects()
+    {
+        if (_characterEffects.Count == 0)
+        {
+            Debug.Log("No characters have any status effects currently.");
+            return;
+        }
+
+        string logMessage = "All characters and their active status effects:\n";
+
+        foreach (var characterEffectPair in _characterEffects)
+        {
+            GameCharacter character = characterEffectPair.Key;
+            List<ActiveStatusEffect> effects = characterEffectPair.Value;
+
+            // Start the log entry for this character
+            logMessage += $"{character} has {effects.Count} active status effect(s):\n";
+
+            // Add each active effect to the log entry
+            foreach (var effect in effects)
+            {
+                logMessage += $"- {effect.statusEffect}, {effect.statusCount}\n";
+            }
+        }
+
+        Debug.Log(logMessage);
+    }
     public static EffectManager Instance
     {
         get
@@ -28,26 +61,28 @@ public class EffectManager
     {
         for (var i = 0; i < characters.Count; i++)
         {
-
-            if (_characterEffects.ContainsKey(characters[i]))
+            GameCharacter character = characters[i];
+            if (_characterEffects.ContainsKey(character))
             {
-                List<ActiveStatusEffect> currentCharacterEffects = _characterEffects[characters[i]];
-                bool alreadyHaveEffect = false;
-                for (var i1 = 0; i1 < currentCharacterEffects.Count; i1++)
+                List<ActiveStatusEffect> currentCharacterEffects = _characterEffects[character];
+                ActiveStatusEffect foundEffect = currentCharacterEffects.FirstOrDefault(e => e.statusEffect == effect.statusEffect);
+
+                if (foundEffect != null)
                 {
-                    if (currentCharacterEffects[i].statusEffect == effect.statusEffect)
-                    {
-                        alreadyHaveEffect = true;
-                        currentCharacterEffects[i].statusCount+=effect.statusCount;
-                    }
+                    foundEffect.statusCount += effect.statusCount;
                 }
-                if (!alreadyHaveEffect)
+                else
                 {
-                    _characterEffects[characters[i]].Add(effect);
+                    _characterEffects[character].Add(new ActiveStatusEffect(effect.statusEffect, effect.statusCount));
                 }
             }
+            else
+            {
+                _characterEffects.Add(character, new List<ActiveStatusEffect> { new ActiveStatusEffect(effect.statusEffect, effect.statusCount) });
+            }
         }
-        RefreshStatusEffect.Invoke();
+        LogCharacterEffects();
+        RefreshStatusEffect.Invoke(); // Ensure this method is defined and correctly updates the game state
     }
 }
 
@@ -58,13 +93,14 @@ public class ActiveStatusEffect
 
     public ActiveStatusEffect(StatusEffects effect, int count)
     {
-        
+        statusEffect = effect;
+        statusCount = count;
     }
 }
 
 public enum StatusEffects
 {
-    Artifact
+    Buff1, Buff2, Buff3
 }
 
 public interface IStatusEffect

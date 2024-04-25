@@ -379,3 +379,4 @@ MonoBehaviour:
   _battleRoomRepository: {fileID: 5207725036035021064}
   _enemyRespository: {fileID: 4193973192848797346}
   _itemsRespository: {fileID: 6685598868367343917}
+  _statusEffectRepository: {fileID: 1900313851607900602}
