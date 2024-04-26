@@ -100,7 +100,10 @@ public class ActiveStatusEffect
 
 public enum StatusEffects
 {
-    Buff1, Buff2, Buff3
+    Artifact, Barricade, Buffer, Dexterity, DrawCard, Energized, Focus, Intangible, Mantra, Metallicize, NextTurnBlock, PlatedArmor, Regenerate, Ritual, Strength, Thorns, Vigor, Accuracy, AfterImage, Amplify, BattleHymn, Berserk, Blasphemy,
+    Blur, Brutality, Burst, Collect, Combust, Corruption, CreativeAI, DarkEmbrace, DemonForm, Deva, Devotion, DoubleDamage, DoubleTap, Duplication, EchoForm, Electro, Envenom, Equilibrium, Establishment, Evolve, FeelNoPain, FireBreathing, FlameBarrier, Foresight,
+    FreeAttackPower, Heatsink, Hello, InfiniteBlade, Juggernaut, LikeWater, Loop, MachineLearning, Magnetism, MasterReality, Mayhem, MentalFortress, Nightmare, Nirvana, NoxiousFumes, Omega, Panache, PenNib, Phantasmal, Rage, Rebound, Regeneration, Rushdown, Repair, Rupture, Sadistic, SimmeringRage,
+    StatisticDischarge, Storm, Study, Surrounded, TheBomb, ThousandCuts, ToolsOfTheTrade, WaveOfTheHand, WellLaidPlans
 }
 
 public interface IStatusEffect
