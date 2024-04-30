@@ -2,31 +2,16 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class GameCharacter : MonoBehaviour
+public abstract class GameCharacter : MonoBehaviour, IDamageDealer
 {
     protected int _currentHealth;
     protected int _maxHealth;
     protected bool _isAlive;
-
-    public Action OnHpChanged;
     
-    public void ReceiveDamage(int damage)
+    public void DealDamage(IGameCharacter target, int amount)
     {
-        if (!_isAlive) return;
-        _currentHealth -= damage;
-        if (_currentHealth <= 0)
-        {
-            _currentHealth = 0;
-            _isAlive = true;
-            StartCoroutine(WaitAndDie());
-        }
+        throw new NotImplementedException();
     }
 
-    protected void Die()
-    {
-        Destroy(gameObject);
-    }
-    
-    protected abstract IEnumerator WaitAndDie();
-    
+    public int Damage { get; set; }
 }

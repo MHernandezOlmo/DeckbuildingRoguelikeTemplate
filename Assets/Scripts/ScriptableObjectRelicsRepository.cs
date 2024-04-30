@@ -1,17 +1,30 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
 {
     
     [SerializeField] private List<SORelic> _relics;
-    
+    private Dictionary<int, RelicEffect> _relicEffects;
+
+    private void Awake()
+    {
+        _relicEffects = new Dictionary<int, RelicEffect>();
+        _relicEffects.Add(0,new DamageBoosterRelicEffect());
+    }
+
     public IRelicData GetRelicById(int id)
     {
         return _relics[id];
     }
-    
 
+    public void ApplyRelicEffect(int relicID)
+    {
+        _relicEffects[relicID].ApplyEffect();
+    }
+    
     public IEnumerable<IRelicData> GetAllRelics()
     {
         return _relics;

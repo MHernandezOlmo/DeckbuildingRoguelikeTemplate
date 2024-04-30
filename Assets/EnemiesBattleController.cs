@@ -10,9 +10,15 @@ public class EnemiesBattleController : MonoBehaviour
 
     private List<BattleEnemy> _enemies;
 
-    public IEnumerable<GameCharacter> GetEnemies()
+    public IEnumerable<IGameCharacter> GetEnemies()
     {
-        return _enemies;
+        List<IGameCharacter> gameCharacters = new List<IGameCharacter>();
+        for (var i = 0; i < _enemies.Count; i++)
+        {
+            gameCharacters.Add(_enemies[i]._gameCharacter);
+        }
+
+        return gameCharacters;
     }
     private void OnEnable()
     {
@@ -48,7 +54,7 @@ public class EnemiesBattleController : MonoBehaviour
     {
         for (var i = 0; i < _enemies.Count; i++)
         {
-            _enemies[i].ReceiveDamage(damage);
+            //_enemies[i].ReceiveDamage(damage);
         }
     }
     
@@ -67,11 +73,6 @@ public class EnemiesBattleController : MonoBehaviour
             enemy.transform.localPosition = Vector3.zero;
             enemy.transform.localRotation = Quaternion.identity;
         }
-    }
-
-    private void Update()
-    {
-        
     }
 }
 

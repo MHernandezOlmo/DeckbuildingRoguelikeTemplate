@@ -14,13 +14,7 @@ public class PlayerCharacter : GameCharacter
         List<GameObject> charactersPrefab = GameDataController.Instance.CharacterRepository.GetAllCharacterPrefabs().ToList();
         ICharacterData myCharacter = characters[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID];
         GameObject character = Instantiate(charactersPrefab[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID], transform);
-        character.transform.localPosition = Vector3.zero;
-        character.transform.localRotation = Quaternion.identity;
-    }
-
-    protected override IEnumerator WaitAndDie()
-    {
-        yield return new WaitForSeconds(2);
-        Die();
+        //character.transform.localPosition = Vector3.zero;
+        //character.transform.localRotation = Quaternion.identity;
     }
 }

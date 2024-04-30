@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class BattleState : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacter _player;
+    [SerializeField] private HeroController _hero;
     [SerializeField] private EnemiesBattleController _battleController;
     [SerializeField] private InventoryController _inventory;
     [SerializeField] private CombatAreaController _combatAreaController;
     [SerializeField] private EffectManager _effectManager;
-    
-    private void Start()
+
+    private IEnumerator Start()
     {
+        yield return null;
+        
     }
 
     public void DealDamageToPlayer(int damage)

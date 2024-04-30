@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
@@ -44,12 +45,18 @@ public class InventoryController : MonoBehaviour
 
         IEnumerator CrWaitAndStopFiring()
         {
+            int damageToDeal = 0;
             foreach (var hitPoint in _currentWeapon.GetCurrentTargetsHighestPriority())
             {
                 yield return new WaitForSeconds(0.2f);
                 _targets.Add(Instantiate(bulletPrefab,hitPoint, Quaternion.identity));
+                damageToDeal += 2;
             }
             yield return new WaitForSeconds(2);
+
+            List<IGameCharacter> enemies = FindObjectOfType<EnemiesBattleController>().GetEnemies().ToList(); 
+            print($"Mira -> {damageToDeal}" );
+            FindObjectOfType<HeroController>().DealDamage(enemies[Random.Range(0,enemies.Count)], damageToDeal);
             _firing = false;
             _canFire = true;
             ReloadWeapon();

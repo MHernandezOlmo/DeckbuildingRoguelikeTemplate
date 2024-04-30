@@ -26,6 +26,16 @@ public class SOCharacter : ScriptableObject, ICharacterData
             return name;
         }
     }
+    
+    [SerializeField] private int baseDamage;
+
+    public int BaseDamage
+    {
+        get
+        {
+            return baseDamage;
+        }
+    }
 
     [SerializeField] private string description;
 

@@ -6,5 +6,4 @@ public interface IRelicData
     string Name { get; }
     string Description { get; }
     Sprite Icon { get; }
-    void ActivateEffect(GameObject player);
 }

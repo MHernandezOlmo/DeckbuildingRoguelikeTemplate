@@ -4,6 +4,7 @@ using UnityEngine;
 
 public interface IRelicRepository
 {
+    
     IRelicData GetRelicById(int id);
     IEnumerable<IRelicData> GetAllRelics();
 

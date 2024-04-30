@@ -42,9 +42,6 @@ public class SORelic : ScriptableObject, IRelicData
     {
         get { return icon; }
     }
-
-    public virtual void ActivateEffect(GameObject player)
-    {
-        // Base implementation is empty
-    }
+    
+    
 }

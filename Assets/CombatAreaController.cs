@@ -47,7 +47,6 @@ public class CombatAreaController : MonoBehaviour
                     Physics2D.SyncTransforms(); 
                 }
                 attempts++;
-
             }
             
             if (positionFound)
