@@ -257,54 +257,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 55802572}
   m_CullTransparentMesh: 1
---- !u!1 &67600328
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 67600330}
-  - component: {fileID: 67600329}
-  m_Layer: 0
-  m_Name: BattleState
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &67600329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67600328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7a5579b7d0914b49bc7449e0a8514f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hero: {fileID: 1476265569}
-  _battleController: {fileID: 307558712}
-  _inventory: {fileID: 1075662261}
-  _combatAreaController: {fileID: 1283186115}
---- !u!4 &67600330
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67600328}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1111.1888, y: 253.33344, z: -6.49134}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &160129717
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,12 +271,12 @@ GameObject:
   - component: {fileID: 160129719}
   - component: {fileID: 160129722}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: CombatButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &160129718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -567,12 +519,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 327491271}
-  - {fileID: 160129718}
   - {fileID: 1952751097}
   - {fileID: 1833429114}
   - {fileID: 915269605}
   - {fileID: 1459249251}
   - {fileID: 529797939}
+  - {fileID: 160129718}
   - {fileID: 1211273009}
   - {fileID: 951936578}
   m_Father: {fileID: 0}
@@ -1757,50 +1709,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 307558713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &801250388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 801250390}
-  - component: {fileID: 801250389}
-  m_Layer: 0
-  m_Name: EffectsTest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &801250389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801250388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2607f10e4dbc7e488222350143b5830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &801250390
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801250388}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1373.3535, y: 328.9142, z: -13.634115}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824513662
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,7 +2010,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801250389}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EffectsTestScruot, Assembly-CSharp
         m_MethodName: ApplyBuff3ToAllCharacters
         m_Mode: 1
@@ -2301,6 +2209,53 @@ MonoBehaviour:
   _inventoryHolder: {fileID: 951936577}
   _inventoryUIWidget: {fileID: 6174771211196317708, guid: ee3999fa99c681242b7fdf357dae3f0e, type: 3}
   bulletPrefab: {fileID: 1514620772710763195, guid: d8d84a664669a104eb51a30a44265d02, type: 3}
+--- !u!1 &1081241960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1081241962}
+  - component: {fileID: 1081241961}
+  m_Layer: 0
+  m_Name: CombatController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1081241961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081241960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f2a89cff3bc4dde8dff2cf049b0da07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _combatAreaController: {fileID: 1283186115}
+  _inventoryController: {fileID: 1075662261}
+  _combatButton: {fileID: 160129719}
+--- !u!4 &1081241962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081241960}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1287.366, y: 563.0089, z: -15.655427}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1211273006
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2492,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1218797002}
   m_CullTransparentMesh: 1
+--- !u!1 &1268866592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268866594}
+  - component: {fileID: 1268866593}
+  m_Layer: 0
+  m_Name: CharactersController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1268866593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268866592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb11e2bbd7f94dec92b523af2eeb619c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heroController: {fileID: 1476265569}
+  _enemiesBattleController: {fileID: 307558712}
+--- !u!4 &1268866594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268866592}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 911.40405, y: 226.31363, z: -8.464741}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1283186111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,7 +2550,7 @@ GameObject:
   - component: {fileID: 1283186114}
   - component: {fileID: 1283186115}
   m_Layer: 5
-  m_Name: CombatArea
+  m_Name: CombatAreaController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2571,7 +2572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 960, y: 0}
+  m_AnchoredPosition: {x: 960.00006, y: 0}
   m_SizeDelta: {x: 600, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1283186114
@@ -2756,7 +2757,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801250389}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EffectsTestScruot, Assembly-CSharp
         m_MethodName: ApplyBuff4ToRandomCharacters
         m_Mode: 1
@@ -2910,6 +2911,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36929fe409162284eb566c6a74663378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _charactersController: {fileID: 1268866593}
+  _inventoryController: {fileID: 1075662261}
+  _combatController: {fileID: 0}
 --- !u!4 &1680490714
 Transform:
   m_ObjectHideFlags: 0
@@ -3076,7 +3080,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801250389}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EffectsTestScruot, Assembly-CSharp
         m_MethodName: ApplyBuff2ToAllCharacters
         m_Mode: 1
@@ -3209,7 +3213,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801250389}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: EffectsTestScruot, Assembly-CSharp
         m_MethodName: ApplyArtifactToAllCharacters
         m_Mode: 1
@@ -3301,12 +3305,12 @@ SceneRoots:
   - {fileID: 282122776}
   - {fileID: 1769698549}
   - {fileID: 1680490714}
+  - {fileID: 1268866594}
   - {fileID: 307558713}
-  - {fileID: 1575088683}
-  - {fileID: 1283186112}
-  - {fileID: 1359163779}
-  - {fileID: 1075662260}
-  - {fileID: 67600330}
-  - {fileID: 1953973300}
-  - {fileID: 801250390}
   - {fileID: 1476265570}
+  - {fileID: 1575088683}
+  - {fileID: 1359163779}
+  - {fileID: 1953973300}
+  - {fileID: 1081241962}
+  - {fileID: 1075662260}
+  - {fileID: 1283186112}

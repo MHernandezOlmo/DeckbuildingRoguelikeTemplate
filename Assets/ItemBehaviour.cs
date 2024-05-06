@@ -10,11 +10,13 @@ public class ItemBehaviour : MonoBehaviour
     {
         public int Priority;
         public Vector2 ContactPoint;
+        public TargetColliderPriority TargetColliderPriority;
 
-        public CollisionData(int priority, Vector2 contactPoint)
+        public CollisionData(int priority, Vector2 contactPoint, TargetColliderPriority targetColliderPriority)
         {
             Priority = priority;
             ContactPoint = contactPoint;
+            TargetColliderPriority = targetColliderPriority;
         }
     }
 
@@ -34,7 +36,7 @@ public class ItemBehaviour : MonoBehaviour
             activeTargetCollisions[parent] = new List<CollisionData>();
         }
 
-        activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint));
+        activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint, tcp));
     }
 
     private void OnCollisionExit2D(Collision2D col)
@@ -82,12 +84,12 @@ public class ItemBehaviour : MonoBehaviour
         else
         {
             // Add a new collision data entry
-            activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint));
+            activeTargetCollisions[parent].Add(new CollisionData(tcp.GetColliderPriority(), contactPoint, tcp));
         }
     }
-    public List<Vector3> GetCurrentTargetsWithHighestPriority()
+    public List<HitTargetInfo> GetCurrentTargetsWithHighestPriority()
     {
-        List<Vector3> hitPoints = new List<Vector3>();
+        List<HitTargetInfo> hitPoints = new List<HitTargetInfo>();
         if (activeTargetCollisions.Count == 0)
         {
             Debug.Log("No current collisions.");
@@ -103,8 +105,20 @@ public class ItemBehaviour : MonoBehaviour
             logMessage += $"Target: {targetEntry.Key.name}, " +
                           $"Highest Priority: {highestPriorityCollision.Priority}, " +
                           $"Contact Point: {highestPriorityCollision.ContactPoint}\n";
-            hitPoints.Add(highestPriorityCollision.ContactPoint);
+            hitPoints.Add(new HitTargetInfo(highestPriorityCollision.ContactPoint, highestPriorityCollision.TargetColliderPriority));
         }
         return hitPoints;
+    }
+}
+
+public struct HitTargetInfo
+{
+    public Vector3 _hitPoint;
+    public TargetColliderPriority _targetColliderPriority;
+
+    public HitTargetInfo(Vector3 hitPoint, TargetColliderPriority targetColliderPriority)
+    {
+        _hitPoint = hitPoint;
+        _targetColliderPriority = targetColliderPriority;
     }
 }

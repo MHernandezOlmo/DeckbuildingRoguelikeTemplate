@@ -60,6 +60,11 @@ public class EnemiesBattleController : MonoBehaviour
     
     void Start()
     {
+        
+    }
+
+    public void InitializeEnemies()
+    {
         IMapNode node =  Map.Instance.GetNode(PersistenceManager.Instance.MyCurrentRun._currentBattleID);
         BattleNode battleNode = node as BattleNode;
 

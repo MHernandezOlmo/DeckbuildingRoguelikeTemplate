@@ -20,6 +20,11 @@ public class HeroController : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+    public void InitializeHero()
+    {
         List<ICharacterData> characters =GameDataController.Instance.CharacterRepository.GetAllCharacters().ToList();
         List<GameObject> charactersPrefab = GameDataController.Instance.CharacterRepository.GetAllCharacterPrefabs().ToList();
         _characterData= characters[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID];
@@ -29,6 +34,7 @@ public class HeroController : MonoBehaviour
         _characterInstance.transform.localPosition = Vector3.zero;
         _characterInstance.transform.localRotation = Quaternion.identity;
     }
+    
     public void DealDamage(IGameCharacter target, int damage)
     {
         if (_currentDamageDealer != null)

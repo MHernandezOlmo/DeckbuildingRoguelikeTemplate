@@ -9,13 +9,9 @@ public class CombatAreaController : MonoBehaviour
     [SerializeField] private GameObject _targetPrefab;
     [SerializeField] private Transform _targetHolder;
 
-    private List<GameObject> _targets;
-    private Vector3 center; 
-    private void Start()
-    {
-        _targets = new List<GameObject>();
-        RefreshTargets();
-    }
+    private List<GameObject> _targets= new List<GameObject>();
+    private Vector3 center;
+
 
     public void RefreshTargets()
     {

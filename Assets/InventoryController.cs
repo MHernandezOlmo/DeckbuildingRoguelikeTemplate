@@ -17,13 +17,7 @@ public class InventoryController : MonoBehaviour
 
     void Start()
     {
-        _targets = new List<GameObject>();
-        _currentCombatInventory = PersistenceManager.Instance.MyCurrentRun._pickedItemsID;
-        _hand = new List<int>( _currentCombatInventory);
-        ShuffleHand();
-        _canFire = true;
-        RefreshHandVisualization();
-        CreateCurrentWeapon();
+
     }
 
     public void StartFiring()
@@ -52,14 +46,14 @@ public class InventoryController : MonoBehaviour
                 _targets.Add(Instantiate(bulletPrefab,hitPoint, Quaternion.identity));
                 damageToDeal += 2;
             }
-            yield return new WaitForSeconds(2);
-
-            List<IGameCharacter> enemies = FindObjectOfType<EnemiesBattleController>().GetEnemies().ToList(); 
-            print($"Mira -> {damageToDeal}" );
-            FindObjectOfType<HeroController>().DealDamage(enemies[Random.Range(0,enemies.Count)], damageToDeal);
             _firing = false;
             _canFire = true;
-            ReloadWeapon();
+            yield return new WaitForSeconds(2);
+
+            
+            List<IGameCharacter> enemies = FindObjectOfType<EnemiesBattleController>().GetEnemies().ToList();
+            FindObjectOfType<HeroController>().DealDamage(enemies[Random.Range(0,enemies.Count)], damageToDeal);
+            
         }
     }
 
@@ -131,5 +125,15 @@ public class InventoryController : MonoBehaviour
     {
         return _currentCombatInventory.Count;
     }
-    
+
+    public void InitializeInventory()
+    {
+        _targets = new List<GameObject>();
+        _currentCombatInventory = PersistenceManager.Instance.MyCurrentRun._pickedItemsID;
+        _hand = new List<int>( _currentCombatInventory);
+        ShuffleHand();
+        _canFire = true;
+        RefreshHandVisualization();
+        CreateCurrentWeapon();
+    }
 }
