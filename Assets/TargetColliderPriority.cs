@@ -9,7 +9,12 @@ public class TargetColliderPriority : MonoBehaviour
     public int GetColliderPriority()
     {
         return _colliderPriority;
-    } 
+    }
+
+    public TargetType GetTargetType()
+    {
+        return _targetType;
+    }
 }
 
 public enum TargetType

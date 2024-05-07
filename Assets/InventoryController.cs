@@ -43,17 +43,14 @@ public class InventoryController : MonoBehaviour
             foreach (var hitPoint in _currentWeapon.GetCurrentTargetsHighestPriority())
             {
                 yield return new WaitForSeconds(0.2f);
-                _targets.Add(Instantiate(bulletPrefab,hitPoint, Quaternion.identity));
+                _targets.Add(Instantiate(bulletPrefab,hitPoint._hitPoint, Quaternion.identity));
                 damageToDeal += 2;
             }
             _firing = false;
             _canFire = true;
-            yield return new WaitForSeconds(2);
-
-            
-            List<IGameCharacter> enemies = FindObjectOfType<EnemiesBattleController>().GetEnemies().ToList();
-            FindObjectOfType<HeroController>().DealDamage(enemies[Random.Range(0,enemies.Count)], damageToDeal);
-            
+            FindObjectOfType<CombatController>().ReceiveDamageData(_currentWeapon.GetCurrentTargetsHighestPriority());
+            // List<IGameCharacter> enemies = FindObjectOfType<EnemiesBattleController>().GetEnemies().ToList();
+            // FindObjectOfType<HeroController>().DealDamage(enemies[Random.Range(0,enemies.Count)], damageToDeal);
         }
     }
 

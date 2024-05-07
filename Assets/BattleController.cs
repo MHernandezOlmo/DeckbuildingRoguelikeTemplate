@@ -12,6 +12,19 @@ public class BattleController : MonoBehaviour
     [SerializeField] private CombatController _combatController;
 
     public static Action OnCombatStart;
+
+    
+    public void EndCombat()
+    {
+        StartCoroutine(CrEndCombat());
+
+        IEnumerator CrEndCombat()
+        {
+            yield return new WaitForSeconds(1);
+            print("Se termina el turno del jugador");
+        }
+    }
+
     public void WinBattle()
     {
             
