@@ -79,7 +79,6 @@ public class MapVisualizer : MonoBehaviour
             case MapNodes.Battle:
                 PersistenceManager.Instance.SelectBattle(node);
                 int battleRoomID = ((BattleNode)_currentMap.GetNode(node)).GetBattleRoomID();
-                print(battleRoomID);
                 GameFlowEvents.LoadScene.Invoke("Battle");        
                 break;
             

@@ -17,3 +17,4 @@ MonoBehaviour:
   description: E D 1
   icon: {fileID: 21300000, guid: adeb42a493ca6d6459a475f7bbba63d9, type: 3}
   maxHP: 40
+  _actionList: 01000000020000000000000001000000

@@ -51,4 +51,10 @@ public class SOEnemy : ScriptableObject
     {
         
     }
+
+    [SerializeField] public List<int> _actionList;
+    
+    
+    
+    
 }

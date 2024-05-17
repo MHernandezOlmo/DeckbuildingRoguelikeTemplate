@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour
 {
     private List<int> _currentCombatInventory;
-    private List<int> _hand;
+    [SerializeField] private List<int> _hand;
     [SerializeField] private GameObject _inventoryHolder;
     [SerializeField] private GameObject _inventoryUIWidget;
     private WeaponBehaviour _currentWeapon;
@@ -56,18 +56,14 @@ public class InventoryController : MonoBehaviour
 
     public void ReloadWeapon()
     {
-        ClearTargets();
-        FindObjectOfType<CombatAreaController>().RefreshTargets();
-        Destroy(_currentWeapon.gameObject);
-        _hand.RemoveAt(0);
-        RefreshHandVisualization();
+
         if (_hand.Count > 0)
         {
             CreateCurrentWeapon();   
         }
     }
 
-    private void ClearTargets()
+    public void ClearTargets()
     {
         for (var i = 0; i < _targets.Count; i++)
         {
@@ -111,11 +107,18 @@ public class InventoryController : MonoBehaviour
     
     public void DrawItem()
     {
-        if (_currentCombatInventory.Count > 0)
+        _canFire = true;
+        
+        if (_hand.Count > 0)
         {
-            int itemIndex = _currentCombatInventory.Count - 1;
-            _hand.Add(_currentCombatInventory[itemIndex]);
-            _currentCombatInventory.RemoveAt(itemIndex);
+            CreateCurrentWeapon();
+        }
+        else
+        {
+            _hand = new List<int>( _currentCombatInventory);
+            ShuffleHand();
+            RefreshHandVisualization();
+            CreateCurrentWeapon();
         }
     }
     public int DeckSize()
@@ -129,8 +132,16 @@ public class InventoryController : MonoBehaviour
         _currentCombatInventory = PersistenceManager.Instance.MyCurrentRun._pickedItemsID;
         _hand = new List<int>( _currentCombatInventory);
         ShuffleHand();
-        _canFire = true;
         RefreshHandVisualization();
-        CreateCurrentWeapon();
+        
+    }
+
+    public void ClearCombatArea()
+    {
+        FindObjectOfType<CombatAreaController>().ClearTargets();
+        ClearTargets();
+        Destroy(_currentWeapon.gameObject);
+        _hand.RemoveAt(0);
+        RefreshHandVisualization();
     }
 }

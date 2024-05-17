@@ -12,27 +12,68 @@ internal class CombatController : MonoBehaviour
 
     public void EndPlayerTurn()
     {
-        StartCoroutine(CrStartEnemyTurn());
+
+        StartCoroutine(CrEndPlayerTurn());
+        
+        IEnumerator CrEndPlayerTurn()
+        {
+            
+            yield return new WaitForSeconds(2);
+            _combatButton.gameObject.SetActive(false);
+            _inventoryController.ClearCombatArea();
+            print("Termina turno jugador");
+            yield return new WaitForSeconds(1);
+            print("Comienza Turno Enemigo");
+        
+            StartCoroutine(CrStartEnemyTurn());
+        }
+        
+
+        
         
         IEnumerator CrStartEnemyTurn()
         {
             yield return new WaitForSeconds(2);
-            
+            print("Empieza el turno del enemigo");
+            foreach (var enemy in FindObjectOfType<EnemiesBattleController>().GetBattleEnemies())
+            {
+                int nextAction = enemy.GetNextAction();
+                yield return new WaitForSeconds(2);
+                print("Soy enemigo" + enemy.name + " y hago la acción: " + nextAction);
+            }
+            yield return new WaitForSeconds(2);
+            EndEnemiesTurn();
+        }
+        
+    }
+
+    public void EndEnemiesTurn()
+    {
+        print("Termino turno de los enemigos.");
+        StartCoroutine(CrWaitAndStartPlayerTurn());
+
+        IEnumerator CrWaitAndStartPlayerTurn()
+        {
+            yield return new WaitForSeconds(3);
+            print("Termina Turno");
+
+            StartPlayerTurn();
         }
     }
+    
     public void ReceiveDamageData(List<HitTargetInfo> info)
     {
         foreach (var hitTargetInfo in info)
         {
             print($"Aplico el efecto de haberle dado a la diana {hitTargetInfo._targetColliderPriority.GetTargetType()}, con prioridad {hitTargetInfo._targetColliderPriority.GetColliderPriority()}");
         }
-        FindObjectOfType<BattleController>().EndCombat();
+        EndPlayerTurn();
+        //FindObjectOfType<BattleController>().EndCombat();
     }
     
     private void OnEnable()
     {
         BattleController.OnCombatStart += InitializeCombat;
-        
     }
 
     private void OnDisable()
@@ -40,10 +81,15 @@ internal class CombatController : MonoBehaviour
         BattleController.OnCombatStart -= InitializeCombat;
     }
 
-    private void InitializeCombat()
+    public void StartPlayerTurn()
     {
+        print("Comienza el turno del jugador");
         _combatButton.gameObject.SetActive(true);
         _inventoryController.DrawItem();
         _combatAreaController.RefreshTargets();
+    }
+    private void InitializeCombat()
+    {
+        StartPlayerTurn();
     }
 }

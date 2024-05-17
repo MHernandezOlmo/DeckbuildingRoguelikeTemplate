@@ -21,7 +21,6 @@ public class BattleController : MonoBehaviour
         IEnumerator CrEndCombat()
         {
             yield return new WaitForSeconds(1);
-            print("Se termina el turno del jugador");
         }
     }
 

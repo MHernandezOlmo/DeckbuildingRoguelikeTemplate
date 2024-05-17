@@ -20,6 +20,10 @@ public class EnemiesBattleController : MonoBehaviour
 
         return gameCharacters;
     }
+    public List<BattleEnemy> GetBattleEnemies()
+    {
+        return _enemies;
+    }
     private void OnEnable()
     {
         BattleEnemy.OnEnemyCreated += AddNewEnemy;

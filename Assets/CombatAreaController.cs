@@ -15,11 +15,7 @@ public class CombatAreaController : MonoBehaviour
 
     public void RefreshTargets()
     {
-        for (var i = 0; i < _targets.Count; i++)
-        {
-            Destroy(_targets[i].gameObject);
-        }
-        _targets.Clear();
+
 
         for (int i = 0; i < 3; i++)
         {
@@ -54,5 +50,14 @@ public class CombatAreaController : MonoBehaviour
                 Destroy(newTarget);
             }
         }
+    }
+
+    public void ClearTargets()
+    {
+        for (var i = 0; i < _targets.Count; i++)
+        {
+            Destroy(_targets[i].gameObject);
+        }
+        _targets.Clear();
     }
 }
