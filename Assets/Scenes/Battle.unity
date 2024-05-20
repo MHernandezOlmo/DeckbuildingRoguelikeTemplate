@@ -2206,6 +2206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd87119f83513894d9304101d0efce0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hand: 
   _inventoryHolder: {fileID: 951936577}
   _inventoryUIWidget: {fileID: 6174771211196317708, guid: ee3999fa99c681242b7fdf357dae3f0e, type: 3}
   bulletPrefab: {fileID: 1514620772710763195, guid: d8d84a664669a104eb51a30a44265d02, type: 3}
@@ -2239,6 +2240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _combatAreaController: {fileID: 1283186115}
+  _battleController: {fileID: 1680490713}
   _inventoryController: {fileID: 1075662261}
   _combatButton: {fileID: 160129719}
 --- !u!4 &1081241962
@@ -2913,7 +2915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _charactersController: {fileID: 1268866593}
   _inventoryController: {fileID: 1075662261}
-  _combatController: {fileID: 0}
+  _combatController: {fileID: 1081241961}
 --- !u!4 &1680490714
 Transform:
   m_ObjectHideFlags: 0

@@ -10,10 +10,20 @@ public class BattleEnemy : MonoBehaviour
     public static Action<BattleEnemy> OnEnemyDied;
     public IGameCharacter _gameCharacter;
     public int _actionCounter;
-    public List<int> GetActionList()
+    [SerializeField] private HealthBarWidget _healthBarWidget;
+    
+
+    public void SetData()
     {
-        return _enemy._actionList;
+        
     }
+
+    public void Die()
+    {
+        FindObjectOfType<EnemiesBattleController>().RemoveEnemy(this);
+        Destroy(gameObject);
+    }
+    
 
     public int GetNextAction()
     {
@@ -24,6 +34,9 @@ public class BattleEnemy : MonoBehaviour
     }
     void Start()
     {
+        _gameCharacter = new IGameCharacter(_enemy.MaxHP);
+        _gameCharacter.OnDie += Die;
+        _healthBarWidget.SetGameCharacter(_gameCharacter);
         OnEnemyCreated.Invoke(this);
     }
 }

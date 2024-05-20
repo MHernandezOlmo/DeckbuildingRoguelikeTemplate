@@ -48,7 +48,7 @@ public class InventoryController : MonoBehaviour
             }
             _firing = false;
             _canFire = true;
-            FindObjectOfType<CombatController>().ReceiveDamageData(_currentWeapon.GetCurrentTargetsHighestPriority());
+            FindObjectOfType<CombatController>().ReceiveTargetsHitData(_currentWeapon.GetCurrentTargetsHighestPriority());
             // List<IGameCharacter> enemies = FindObjectOfType<EnemiesBattleController>().GetEnemies().ToList();
             // FindObjectOfType<HeroController>().DealDamage(enemies[Random.Range(0,enemies.Count)], damageToDeal);
         }

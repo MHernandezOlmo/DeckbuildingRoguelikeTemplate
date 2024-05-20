@@ -7,6 +7,7 @@ using UnityEngine.UI;
 internal class CombatController : MonoBehaviour
 {
     [SerializeField] private CombatAreaController _combatAreaController;
+    [SerializeField] private BattleController _battleController;
     [SerializeField] private InventoryController _inventoryController;
     [SerializeField] private Button _combatButton;
 
@@ -35,14 +36,24 @@ internal class CombatController : MonoBehaviour
         {
             yield return new WaitForSeconds(2);
             print("Empieza el turno del enemigo");
-            foreach (var enemy in FindObjectOfType<EnemiesBattleController>().GetBattleEnemies())
+            var enemies = FindObjectOfType<EnemiesBattleController>().GetBattleEnemies();
+            if (enemies.Count > 0)
             {
-                int nextAction = enemy.GetNextAction();
+                foreach (var enemy in enemies)
+                {
+                    int nextAction = enemy.GetNextAction();
+                    yield return new WaitForSeconds(2);
+                    print("Soy enemigo" + enemy.name + " y hago la acción: " + nextAction);
+                }
+            
                 yield return new WaitForSeconds(2);
-                print("Soy enemigo" + enemy.name + " y hago la acción: " + nextAction);
+                EndEnemiesTurn();    
             }
-            yield return new WaitForSeconds(2);
-            EndEnemiesTurn();
+            else
+            {
+                _battleController.WinBattle();
+            }
+            
         }
         
     }
@@ -61,12 +72,18 @@ internal class CombatController : MonoBehaviour
         }
     }
     
-    public void ReceiveDamageData(List<HitTargetInfo> info)
+    public void ReceiveTargetsHitData(List<HitTargetInfo> info)
     {
+        
         foreach (var hitTargetInfo in info)
         {
             print($"Aplico el efecto de haberle dado a la diana {hitTargetInfo._targetColliderPriority.GetTargetType()}, con prioridad {hitTargetInfo._targetColliderPriority.GetColliderPriority()}");
         }
+
+        
+        BattleEnemy enemy = FindObjectOfType<EnemiesBattleController>().GetSingleEnemy(0);
+        IGameCharacter enemyGameCharacter = enemy._gameCharacter;
+        FindObjectOfType<GameCharactersController>().CurrentHeroController.DealDamage(enemyGameCharacter, 60);
         EndPlayerTurn();
         //FindObjectOfType<BattleController>().EndCombat();
     }
@@ -80,6 +97,7 @@ internal class CombatController : MonoBehaviour
     {
         BattleController.OnCombatStart -= InitializeCombat;
     }
+    
 
     public void StartPlayerTurn()
     {
@@ -91,5 +109,14 @@ internal class CombatController : MonoBehaviour
     private void InitializeCombat()
     {
         StartPlayerTurn();
+    }
+
+    public void DealDamage(IGameCharacter damageDealer, IGameCharacter target, int damage)
+    {
+        
+    }
+    public enum CombatAction
+    {
+        DealDamage, Heal, EarnArmour, ApplyStatusEffect 
     }
 }

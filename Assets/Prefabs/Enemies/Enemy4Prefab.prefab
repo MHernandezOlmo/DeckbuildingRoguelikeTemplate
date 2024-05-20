@@ -132,6 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: 07585eea139279342bb41d6e149b9159, type: 2}
+  _actionCounter: 0
+  _healthBarWidget: {fileID: 3667481145185398263}
 --- !u!1001 &7159586878160128617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223,7 +225,7 @@ PrefabInstance:
     - target: {fileID: 6978121312436019306, guid: 3a88060a5af597849a2e1cda9dce1259, type: 3}
       propertyPath: _character
       value: 
-      objectReference: {fileID: 260206439353887756}
+      objectReference: {fileID: 0}
     - target: {fileID: 8431354713945768750, guid: 3a88060a5af597849a2e1cda9dce1259, type: 3}
       propertyPath: m_Name
       value: CanvasStatusEffects
@@ -326,6 +328,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5332281340498593392, guid: dd506b361c65cae4da3c86e6ccfdf122, type: 3}
+      propertyPath: _battleEnemy
+      value: 
+      objectReference: {fileID: 260206439353887756}
     - target: {fileID: 6945271990072069041, guid: dd506b361c65cae4da3c86e6ccfdf122, type: 3}
       propertyPath: m_Name
       value: CanvasHP
@@ -335,6 +341,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd506b361c65cae4da3c86e6ccfdf122, type: 3}
+--- !u!114 &3667481145185398263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5332281340498593392, guid: dd506b361c65cae4da3c86e6ccfdf122, type: 3}
+  m_PrefabInstance: {fileID: 8711530730643729287}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1939596d100784148b6b1a271bc4f73e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5572855354839804656 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3869525979616969079, guid: dd506b361c65cae4da3c86e6ccfdf122, type: 3}

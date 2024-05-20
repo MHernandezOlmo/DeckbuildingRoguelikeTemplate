@@ -26,7 +26,8 @@ public class BattleController : MonoBehaviour
 
     public void WinBattle()
     {
-            
+        PersistenceManager.Instance.WinBattle();
+        GameFlowEvents.LoadScene.Invoke("Map");
     }
 
     private IEnumerator Start()

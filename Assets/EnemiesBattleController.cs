@@ -20,6 +20,11 @@ public class EnemiesBattleController : MonoBehaviour
 
         return gameCharacters;
     }
+
+    public BattleEnemy GetSingleEnemy(int index)
+    {
+        return _enemies[index];
+    }
     public List<BattleEnemy> GetBattleEnemies()
     {
         return _enemies;
@@ -46,11 +51,11 @@ public class EnemiesBattleController : MonoBehaviour
         _enemies.Add(enemy);
     }
 
-    private void RemoveEnemy(BattleEnemy enemy)
+    public void RemoveEnemy(BattleEnemy enemy)
     {
         if (_enemies.Contains(enemy))
         {
-            //_enemies.RemoveAt(_enemies.IndexOf(enemy));
+            _enemies.RemoveAt(_enemies.IndexOf(enemy));
         }
     }
 
@@ -62,11 +67,6 @@ public class EnemiesBattleController : MonoBehaviour
         }
     }
     
-    void Start()
-    {
-        
-    }
-
     public void InitializeEnemies()
     {
         IMapNode node =  Map.Instance.GetNode(PersistenceManager.Instance.MyCurrentRun._currentBattleID);
