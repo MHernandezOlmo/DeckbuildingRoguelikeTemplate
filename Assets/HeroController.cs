@@ -77,7 +77,7 @@ public class HeroController : MonoBehaviour
     public void DealDamage(IGameCharacter target, int damage)
     {
         int baseDamage = damage;
-        _character.DealDamage(target, baseDamage);
+        _character.ApplyDamage(target, baseDamage);
         print("Hago daño");
     }
 }

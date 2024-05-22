@@ -99,7 +99,7 @@ internal class CombatController : MonoBehaviour
         BattleEnemy enemy = FindObjectOfType<EnemiesBattleController>().GetSingleEnemy(0);
         //PerformAttack(FindObjectOfType<GameCharactersController>().CurrentHeroController.Character, enemy, 50);
         IGameCharacter enemyGameCharacter = enemy._gameCharacter;
-        FindObjectOfType<GameCharactersController>().CurrentHeroController.DealDamage(enemyGameCharacter, 60);
+        HeroController.Instance.DealDamage(enemyGameCharacter, 60);
         EndPlayerTurn();
         //FindObjectOfType<BattleController>().EndCombat();
     }

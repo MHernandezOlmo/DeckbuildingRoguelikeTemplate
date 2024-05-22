@@ -14,26 +14,29 @@ public class IGameCharacter : IDamageDealer, IDamageReceiver
     public Action<int, int> OnHealthChanged = delegate(int i, int i1) {  };
     public Action OnDie = delegate {  };
     private IDamageDealer _currentDamageDealer;
-    private string name;
-    
+
+    public void ApplyDamage(IGameCharacter target, int amount)
+    {
+        _currentDamageDealer.DealDamage(target, amount);
+    }
     public IGameCharacter(int maxHealth)
     {
-        name = Random.Range(0, 1000).ToString();
         MaxHealth = maxHealth;
         CurrentHealth = maxHealth;
         _currentDamageDealer = this;
     }
     public void DealDamage(IGameCharacter target, int amount)
     {
-        
+        Debug.Log($"Le hago {amount} de daño al puto");
         target.ReceiveDamage(amount);
-        Debug.Log($"Soy {name} y Le hago {amount} de daño al puto");
     }
     
     public void AddDamageDecorator(DamageBoostDecorator damageBoostDecorator)
     {
         damageBoostDecorator.SetDamageDealerToBeWrapped(_currentDamageDealer);
         _currentDamageDealer = damageBoostDecorator;
+        Debug.Log($"Damage decorator added with additional damage: {damageBoostDecorator.Damage}");
+
     }
     
     public void ReceiveDamage(int amount)
