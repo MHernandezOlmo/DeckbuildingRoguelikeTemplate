@@ -7,12 +7,12 @@ public class Artifact : StatusEffect
         this.counter = counter;
     }
 
-    public override void ApplyEffect(GameCharacter target)
+    public override void ApplyEffect(IGameCharacter target)
     {
         
     }
 
-    public override void RemoveEffect(GameCharacter character)
+    public override void RemoveEffect(IGameCharacter character)
     {
         
     }

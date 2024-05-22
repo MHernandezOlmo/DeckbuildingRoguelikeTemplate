@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ public class ScriptableObjectCharacterRepository : MonoBehaviour, ICharacterRepo
     
     [SerializeField] private List<SOCharacter> _characters;
     [SerializeField] private List<GameObject> _charactersPrefabs;
-    
 
     public ICharacterData GetCharacterById(int id)
     {

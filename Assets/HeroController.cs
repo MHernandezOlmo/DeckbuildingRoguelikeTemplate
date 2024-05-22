@@ -6,48 +6,78 @@ using System.Linq;
 
 public class HeroController : MonoBehaviour
 {
+    private static HeroController _instance;
+
+    public static HeroController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<HeroController>();
+
+                if (_instance == null)
+                {
+                    GameObject singleton = new GameObject(typeof(HeroController).ToString());
+                    _instance = singleton.AddComponent<HeroController>();
+                }
+            }
+
+            return _instance;
+        }
+    }
+
     private IGameCharacter _character;
-    private IDamageDealer _currentDamageDealer;
     private ICharacterData _characterData;
     private GameObject _characterInstance;
-    public static Action<DamageBoostDecorator> AddNewDamageBoostDecorator;
+
+    public IGameCharacter Character
+    {
+        get => _character;
+        set
+        {
+            _character = value;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: if you want to keep this instance across scenes
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void OnEnable()
     {
-        AddNewDamageBoostDecorator += AddDamageDecorator;
     }
-    
 
     private void Start()
     {
-        
     }
 
     public void InitializeHero()
     {
-        List<ICharacterData> characters =GameDataController.Instance.CharacterRepository.GetAllCharacters().ToList();
+        List<ICharacterData> characters = GameDataController.Instance.CharacterRepository.GetAllCharacters().ToList();
         List<GameObject> charactersPrefab = GameDataController.Instance.CharacterRepository.GetAllCharacterPrefabs().ToList();
-        _characterData= characters[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID];
+        _characterData = characters[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID];
         _characterInstance = Instantiate(charactersPrefab[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID], transform);
         _character = new IGameCharacter(500);
-        _currentDamageDealer = _character;
+        _characterInstance.GetComponentInChildren<HealthBarWidget>().SetGameCharacter(_character);
+        _characterInstance.GetComponentInChildren<CharacterStatusEffectUIManager>().SetCharacter(_character);
         _characterInstance.transform.localPosition = Vector3.zero;
         _characterInstance.transform.localRotation = Quaternion.identity;
     }
-    
+
     public void DealDamage(IGameCharacter target, int damage)
     {
-        if (_currentDamageDealer != null)
-        {
-            int baseDamage = damage;
-            _currentDamageDealer.DealDamage(target, baseDamage);
-            print("Hago daño");
-        }
-    }
-
-    public void AddDamageDecorator(DamageBoostDecorator damageBoostDecorator)
-    {
-        damageBoostDecorator.SetDamageDealerToBeWrapped(_currentDamageDealer);
-        _currentDamageDealer = damageBoostDecorator;
+        int baseDamage = damage;
+        _character.DealDamage(target, baseDamage);
+        print("Hago daño");
     }
 }

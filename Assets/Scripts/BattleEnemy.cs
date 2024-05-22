@@ -11,6 +11,7 @@ public class BattleEnemy : MonoBehaviour
     public IGameCharacter _gameCharacter;
     public int _actionCounter;
     [SerializeField] private HealthBarWidget _healthBarWidget;
+    [SerializeField] private CharacterStatusEffectUIManager _statusEffectUI;
     
 
     public void SetData()
@@ -37,6 +38,7 @@ public class BattleEnemy : MonoBehaviour
         _gameCharacter = new IGameCharacter(_enemy.MaxHP);
         _gameCharacter.OnDie += Die;
         _healthBarWidget.SetGameCharacter(_gameCharacter);
+        _statusEffectUI.SetCharacter(_gameCharacter);
         OnEnemyCreated.Invoke(this);
     }
 }

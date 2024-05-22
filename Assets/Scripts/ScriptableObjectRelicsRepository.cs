@@ -22,8 +22,10 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
 
     public void ApplyRelicEffect(int relicID)
     {
-        _relicEffects[relicID].ApplyEffect();
+        print("APLICO EL EFECTO DE LA RELIQUIA " + relicID);
+        _relicEffects[relicID].ApplyEffect(HeroController.Instance.Character);
     }
+
     
     public IEnumerable<IRelicData> GetAllRelics()
     {
@@ -36,8 +38,6 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
 
         if (count >= _relics.Count)
         {
-            // If the requested number of relics is more than or equal to the total available,
-            // return all relics (since they are all unique)
             return _relics;
         }
         else

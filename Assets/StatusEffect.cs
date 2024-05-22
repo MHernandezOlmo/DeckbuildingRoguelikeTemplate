@@ -1,6 +1,6 @@
 public abstract class StatusEffect : IStatusEffect
 {
-    public abstract void ApplyEffect(GameCharacter target);
+    public abstract void ApplyEffect(IGameCharacter target);
 
-    public abstract void RemoveEffect(GameCharacter character);
+    public abstract void RemoveEffect(IGameCharacter character);
 }

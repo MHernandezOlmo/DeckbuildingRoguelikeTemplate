@@ -17,7 +17,8 @@ public class DamageBoostDecorator : IDamageDealer
     }
 
     public void SetDamageDealerToBeWrapped(IDamageDealer wrappedDamageDealer)
-    {
+    { 
+        Debug.Log("Aqui si");
         _wrappedDamageDealer = wrappedDamageDealer;
     }
 

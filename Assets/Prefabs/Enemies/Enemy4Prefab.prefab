@@ -134,6 +134,7 @@ MonoBehaviour:
   _enemy: {fileID: 11400000, guid: 07585eea139279342bb41d6e149b9159, type: 2}
   _actionCounter: 0
   _healthBarWidget: {fileID: 3667481145185398263}
+  _statusEffectUI: {fileID: 255775032861305347}
 --- !u!1001 &7159586878160128617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +236,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a88060a5af597849a2e1cda9dce1259, type: 3}
+--- !u!114 &255775032861305347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6978121312436019306, guid: 3a88060a5af597849a2e1cda9dce1259, type: 3}
+  m_PrefabInstance: {fileID: 7159586878160128617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf05b980c80c3649b151b0edc79db69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4866147465398944641 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2365499225972525544, guid: 3a88060a5af597849a2e1cda9dce1259, type: 3}

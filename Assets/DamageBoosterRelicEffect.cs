@@ -1,11 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageBoosterRelicEffect : RelicEffect
 {
-    public override void ApplyEffect()
+    public override void ApplyEffect(IGameCharacter targetCharacter)
     {
-         HeroController.AddNewDamageBoostDecorator.Invoke(new DamageBoostDecorator(20));
+        
+        targetCharacter.AddDamageDecorator(new DamageBoostDecorator(20));
+        //targetCharacter.AddNewDamageBoostDecorator.Invoke(new DamageBoostDecorator(20));
     }
+    
 }

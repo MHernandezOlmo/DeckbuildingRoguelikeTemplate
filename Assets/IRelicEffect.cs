@@ -1,4 +1,4 @@
 public interface IRelicEffect
 {
-    void ApplyEffect();
+    void ApplyEffect(IGameCharacter character);
 }

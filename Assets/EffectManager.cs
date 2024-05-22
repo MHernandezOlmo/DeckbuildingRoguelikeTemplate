@@ -7,16 +7,25 @@ public class EffectManager
 {
     private static EffectManager _instance;
 
-    private Dictionary<GameCharacter, List<ActiveStatusEffect>> _characterEffects;
+    private Dictionary<IGameCharacter, List<ActiveStatusEffect>> _characterEffects;
 
-    public List<ActiveStatusEffect> GetMyEffects(GameCharacter character)
+    public List<ActiveStatusEffect> GetMyEffects(IGameCharacter character)
     {
-        return _characterEffects[character];
+        if (_characterEffects.ContainsKey(character))
+        {
+            
+            return _characterEffects[character];
+            
+        }
+        else
+        {
+            return new List<ActiveStatusEffect>();
+        }
     }
     public static Action RefreshStatusEffect;
     private EffectManager()
     {
-        _characterEffects = new Dictionary<GameCharacter, List<ActiveStatusEffect>>();
+        _characterEffects = new Dictionary<IGameCharacter, List<ActiveStatusEffect>>();
     }
     private void LogCharacterEffects()
     {
@@ -30,7 +39,7 @@ public class EffectManager
 
         foreach (var characterEffectPair in _characterEffects)
         {
-            GameCharacter character = characterEffectPair.Key;
+            IGameCharacter character = characterEffectPair.Key;
             List<ActiveStatusEffect> effects = characterEffectPair.Value;
 
             // Start the log entry for this character
@@ -57,11 +66,11 @@ public class EffectManager
         }
     }
 
-    public void ApplyEffect(ActiveStatusEffect effect, List<GameCharacter> characters)
+    public void ApplyEffect(ActiveStatusEffect effect, List<IGameCharacter> characters)
     {
         for (var i = 0; i < characters.Count; i++)
         {
-            GameCharacter character = characters[i];
+            IGameCharacter character = characters[i];
             if (_characterEffects.ContainsKey(character))
             {
                 List<ActiveStatusEffect> currentCharacterEffects = _characterEffects[character];
@@ -79,6 +88,11 @@ public class EffectManager
             else
             {
                 _characterEffects.Add(character, new List<ActiveStatusEffect> { new ActiveStatusEffect(effect.statusEffect, effect.statusCount) });
+                
+                Debug.Log("ApplyDebuffDecorator to Player");
+                //Aquí es donde se aplica un efecto nuevo para el jugador
+                 GameDataController.Instance.StatusEffectRepository.ApplyStatucEffect(effect.statusEffect, character);
+                
             }
         }
         LogCharacterEffects();
@@ -108,6 +122,6 @@ public enum StatusEffects
 
 public interface IStatusEffect
 {
-    void ApplyEffect(GameCharacter character);
-    void RemoveEffect(GameCharacter character);
+    void ApplyEffect(IGameCharacter character);
+    void RemoveEffect(IGameCharacter character);
 }

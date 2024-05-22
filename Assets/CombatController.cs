@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +30,7 @@ internal class CombatController : MonoBehaviour
         
             StartCoroutine(CrStartEnemyTurn());
         }
+
         
 
         
@@ -43,7 +46,19 @@ internal class CombatController : MonoBehaviour
                 {
                     int nextAction = enemy.GetNextAction();
                     yield return new WaitForSeconds(2);
-                    print("Soy enemigo" + enemy.name + " y hago la acción: " + nextAction);
+
+                    switch (nextAction)
+                    {
+                        case 0:
+                            print("Soy enemigo" + enemy.name + " y hago la dañacion");
+                            enemy._gameCharacter.DealDamage(FindObjectOfType<HeroController>().Character,50);
+                            break;
+                        
+                        case 1:
+                            EffectManager.Instance.ApplyEffect(new ActiveStatusEffect(StatusEffects.Artifact, 5),new List<IGameCharacter>(){FindObjectOfType<HeroController>().Character});
+                            break;
+                        
+                    }
                 }
             
                 yield return new WaitForSeconds(2);
@@ -82,6 +97,7 @@ internal class CombatController : MonoBehaviour
 
         
         BattleEnemy enemy = FindObjectOfType<EnemiesBattleController>().GetSingleEnemy(0);
+        //PerformAttack(FindObjectOfType<GameCharactersController>().CurrentHeroController.Character, enemy, 50);
         IGameCharacter enemyGameCharacter = enemy._gameCharacter;
         FindObjectOfType<GameCharactersController>().CurrentHeroController.DealDamage(enemyGameCharacter, 60);
         EndPlayerTurn();
@@ -110,11 +126,7 @@ internal class CombatController : MonoBehaviour
     {
         StartPlayerTurn();
     }
-
-    public void DealDamage(IGameCharacter damageDealer, IGameCharacter target, int damage)
-    {
-        
-    }
+    
     public enum CombatAction
     {
         DealDamage, Heal, EarnArmour, ApplyStatusEffect 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class RelicEffect : IRelicEffect
 {
-    public abstract void ApplyEffect();
+    public abstract void ApplyEffect(IGameCharacter character);
 }
 
 
