@@ -55,7 +55,7 @@ internal class CombatController : MonoBehaviour
                             break;
                         
                         case 1:
-                            EffectManager.Instance.ApplyEffect(new ActiveStatusEffect(StatusEffects.Artifact, 5),new List<IGameCharacter>(){FindObjectOfType<HeroController>().Character});
+                            EffectManager.Instance.ApplyEffect(new ActiveStatusEffect(StatusEffects.Artifact, 5),new List<GameCharacter>(){FindObjectOfType<HeroController>().Character});
                             break;
                         
                     }
@@ -92,13 +92,13 @@ internal class CombatController : MonoBehaviour
         
         foreach (var hitTargetInfo in info)
         {
-            print($"Aplico el efecto de haberle dado a la diana {hitTargetInfo._targetColliderPriority.GetTargetType()}, con prioridad {hitTargetInfo._targetColliderPriority.GetColliderPriority()}");
+            //print($"Aplico el efecto de haberle dado a la diana {hitTargetInfo._targetColliderPriority.GetTargetType()}, con prioridad {hitTargetInfo._targetColliderPriority.GetColliderPriority()}");
         }
 
         
         BattleEnemy enemy = FindObjectOfType<EnemiesBattleController>().GetSingleEnemy(0);
         //PerformAttack(FindObjectOfType<GameCharactersController>().CurrentHeroController.Character, enemy, 50);
-        IGameCharacter enemyGameCharacter = enemy._gameCharacter;
+        GameCharacter enemyGameCharacter = enemy._gameCharacter;
         HeroController.Instance.DealDamage(enemyGameCharacter, 60);
         EndPlayerTurn();
         //FindObjectOfType<BattleController>().EndCombat();
@@ -117,7 +117,6 @@ internal class CombatController : MonoBehaviour
 
     public void StartPlayerTurn()
     {
-        print("Comienza el turno del jugador");
         _combatButton.gameObject.SetActive(true);
         _inventoryController.DrawItem();
         _combatAreaController.RefreshTargets();

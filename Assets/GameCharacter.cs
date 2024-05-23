@@ -6,7 +6,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 
-public class IGameCharacter : IDamageDealer, IDamageReceiver
+public class GameCharacter : IDamageDealer, IDamageReceiver
 {
     public int Damage { get; set; }
     public int CurrentHealth { get; set; }
@@ -15,30 +15,28 @@ public class IGameCharacter : IDamageDealer, IDamageReceiver
     public Action OnDie = delegate {  };
     private IDamageDealer _currentDamageDealer;
 
-    public void ApplyDamage(IGameCharacter target, int amount)
+    public void ApplyDamage(GameCharacter target, int amount)
     {
         _currentDamageDealer.DealDamage(target, amount);
     }
-    public IGameCharacter(int maxHealth)
+    public GameCharacter(int maxHealth)
     {
         MaxHealth = maxHealth;
         CurrentHealth = maxHealth;
         _currentDamageDealer = this;
     }
-    public void DealDamage(IGameCharacter target, int amount)
+    public void DealDamage(GameCharacter target, int amount)
     {
-        Debug.Log($"Le hago {amount} de daño al puto");
+        Debug.Log($"Daño final " + amount);
         target.ReceiveDamage(amount);
     }
     
-    public void AddDamageDecorator(DamageBoostDecorator damageBoostDecorator)
+    public void AddDamageDecorator(DamageModifierDecorator damageBoostDecorator)
     {
         damageBoostDecorator.SetDamageDealerToBeWrapped(_currentDamageDealer);
         _currentDamageDealer = damageBoostDecorator;
-        Debug.Log($"Damage decorator added with additional damage: {damageBoostDecorator.Damage}");
-
     }
-    
+
     public void ReceiveDamage(int amount)
     {
         CurrentHealth -= amount;

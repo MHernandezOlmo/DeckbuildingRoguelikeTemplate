@@ -1,30 +1,29 @@
 
 using UnityEngine;
 
-public class DamageBoostDecorator : IDamageDealer
+public class DamageModifierDecorator : IDamageDealer
 {
     private IDamageDealer _wrappedDamageDealer;
     public int Damage { get; set; }
 
-    public DamageBoostDecorator(IDamageDealer wrappedDamageDealer, int damage)
+    public DamageModifierDecorator(IDamageDealer wrappedDamageDealer, int damage)
     {
         _wrappedDamageDealer = wrappedDamageDealer;
         Damage = damage;
     }
-    public DamageBoostDecorator(int damage)
+    public DamageModifierDecorator(int damage)
     {
         Damage = damage;
     }
 
     public void SetDamageDealerToBeWrapped(IDamageDealer wrappedDamageDealer)
-    { 
-        Debug.Log("Aqui si");
+    {
         _wrappedDamageDealer = wrappedDamageDealer;
     }
 
-    public void DealDamage(IGameCharacter target, int amount)
+    public void DealDamage(GameCharacter target, int amount)
     {
-        Debug.Log($"ya de por sí yo haría {amount}");   
+        Debug.Log($"Modifico el daño que venia {amount} en " + Damage);
         _wrappedDamageDealer.DealDamage(target, amount + Damage);
     }
 

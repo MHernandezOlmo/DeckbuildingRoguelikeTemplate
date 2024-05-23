@@ -10,9 +10,9 @@ public class EnemiesBattleController : MonoBehaviour
 
     private List<BattleEnemy> _enemies;
 
-    public IEnumerable<IGameCharacter> GetEnemies()
+    public IEnumerable<GameCharacter> GetEnemies()
     {
-        List<IGameCharacter> gameCharacters = new List<IGameCharacter>();
+        List<GameCharacter> gameCharacters = new List<GameCharacter>();
         for (var i = 0; i < _enemies.Count; i++)
         {
             gameCharacters.Add(_enemies[i]._gameCharacter);

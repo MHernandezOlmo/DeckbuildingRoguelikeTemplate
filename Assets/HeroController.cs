@@ -27,11 +27,11 @@ public class HeroController : MonoBehaviour
         }
     }
 
-    private IGameCharacter _character;
+    private GameCharacter _character;
     private ICharacterData _characterData;
     private GameObject _characterInstance;
 
-    public IGameCharacter Character
+    public GameCharacter Character
     {
         get => _character;
         set
@@ -67,17 +67,16 @@ public class HeroController : MonoBehaviour
         List<GameObject> charactersPrefab = GameDataController.Instance.CharacterRepository.GetAllCharacterPrefabs().ToList();
         _characterData = characters[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID];
         _characterInstance = Instantiate(charactersPrefab[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID], transform);
-        _character = new IGameCharacter(500);
+        _character = new GameCharacter(500);
         _characterInstance.GetComponentInChildren<HealthBarWidget>().SetGameCharacter(_character);
         _characterInstance.GetComponentInChildren<CharacterStatusEffectUIManager>().SetCharacter(_character);
         _characterInstance.transform.localPosition = Vector3.zero;
         _characterInstance.transform.localRotation = Quaternion.identity;
     }
 
-    public void DealDamage(IGameCharacter target, int damage)
+    public void DealDamage(GameCharacter target, int damage)
     {
         int baseDamage = damage;
         _character.ApplyDamage(target, baseDamage);
-        print("Hago daño");
     }
 }

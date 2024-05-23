@@ -8,7 +8,7 @@ public class BattleEnemy : MonoBehaviour
     [SerializeField] private SOEnemy _enemy;
     public static Action<BattleEnemy> OnEnemyCreated;
     public static Action<BattleEnemy> OnEnemyDied;
-    public IGameCharacter _gameCharacter;
+    public GameCharacter _gameCharacter;
     public int _actionCounter;
     [SerializeField] private HealthBarWidget _healthBarWidget;
     [SerializeField] private CharacterStatusEffectUIManager _statusEffectUI;
@@ -35,7 +35,7 @@ public class BattleEnemy : MonoBehaviour
     }
     void Start()
     {
-        _gameCharacter = new IGameCharacter(_enemy.MaxHP);
+        _gameCharacter = new GameCharacter(_enemy.MaxHP);
         _gameCharacter.OnDie += Die;
         _healthBarWidget.SetGameCharacter(_gameCharacter);
         _statusEffectUI.SetCharacter(_gameCharacter);

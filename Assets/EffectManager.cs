@@ -7,9 +7,9 @@ public class EffectManager
 {
     private static EffectManager _instance;
 
-    private Dictionary<IGameCharacter, List<ActiveStatusEffect>> _characterEffects;
+    private Dictionary<GameCharacter, List<ActiveStatusEffect>> _characterEffects;
 
-    public List<ActiveStatusEffect> GetMyEffects(IGameCharacter character)
+    public List<ActiveStatusEffect> GetMyEffects(GameCharacter character)
     {
         if (_characterEffects.ContainsKey(character))
         {
@@ -25,7 +25,7 @@ public class EffectManager
     public static Action RefreshStatusEffect;
     private EffectManager()
     {
-        _characterEffects = new Dictionary<IGameCharacter, List<ActiveStatusEffect>>();
+        _characterEffects = new Dictionary<GameCharacter, List<ActiveStatusEffect>>();
     }
     private void LogCharacterEffects()
     {
@@ -39,7 +39,7 @@ public class EffectManager
 
         foreach (var characterEffectPair in _characterEffects)
         {
-            IGameCharacter character = characterEffectPair.Key;
+            GameCharacter character = characterEffectPair.Key;
             List<ActiveStatusEffect> effects = characterEffectPair.Value;
 
             // Start the log entry for this character
@@ -66,11 +66,11 @@ public class EffectManager
         }
     }
 
-    public void ApplyEffect(ActiveStatusEffect effect, List<IGameCharacter> characters)
+    public void ApplyEffect(ActiveStatusEffect effect, List<GameCharacter> characters)
     {
         for (var i = 0; i < characters.Count; i++)
         {
-            IGameCharacter character = characters[i];
+            GameCharacter character = characters[i];
             if (_characterEffects.ContainsKey(character))
             {
                 List<ActiveStatusEffect> currentCharacterEffects = _characterEffects[character];
@@ -91,7 +91,7 @@ public class EffectManager
                 
                 Debug.Log("ApplyDebuffDecorator to Player");
                 //Aquí es donde se aplica un efecto nuevo para el jugador
-                 GameDataController.Instance.StatusEffectRepository.ApplyStatucEffect(effect.statusEffect, character);
+                 GameDataController.Instance.StatusEffectRepository.ApplyAlterStatusEffect(effect.statusEffect, character);
                 
             }
         }
@@ -122,6 +122,6 @@ public enum StatusEffects
 
 public interface IStatusEffect
 {
-    void ApplyEffect(IGameCharacter character);
-    void RemoveEffect(IGameCharacter character);
+    void ApplyEffect(GameCharacter character);
+    void RemoveEffect(GameCharacter character);
 }

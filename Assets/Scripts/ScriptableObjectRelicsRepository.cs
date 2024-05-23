@@ -22,7 +22,6 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
 
     public void ApplyRelicEffect(int relicID)
     {
-        print("APLICO EL EFECTO DE LA RELIQUIA " + relicID);
         _relicEffects[relicID].ApplyEffect(HeroController.Instance.Character);
     }
 

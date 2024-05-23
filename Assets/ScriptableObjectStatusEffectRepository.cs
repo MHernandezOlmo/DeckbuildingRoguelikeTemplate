@@ -6,17 +6,16 @@ public class ScriptableObjectStatusEffectRepository : MonoBehaviour
 {
     [SerializeField] private List<SOStatusEffect> _statusEffects;
     [SerializeField] private List<GameObject> _statusEffectPrefabs;
-    private Dictionary<StatusEffects, RelicEffect> _statusEffectsEffects;
+    private Dictionary<StatusEffects, AlterStatusEffect> _statusEffectsEffects;
 
 
     public void Awake()
     {
-        _statusEffectsEffects = new Dictionary<StatusEffects, RelicEffect>();
-        _statusEffectsEffects.Add(StatusEffects.Artifact, new DamageBoosterRelicEffect());
-   
+        _statusEffectsEffects = new Dictionary<StatusEffects, AlterStatusEffect>();
+        _statusEffectsEffects.Add(StatusEffects.Artifact, new DamageReducerAlterStatusEffect());
     }
 
-    public void ApplyStatucEffect(StatusEffects effect, IGameCharacter character)
+    public void ApplyAlterStatusEffect(StatusEffects effect, GameCharacter character)
     {
         _statusEffectsEffects[effect].ApplyEffect(character);
     }

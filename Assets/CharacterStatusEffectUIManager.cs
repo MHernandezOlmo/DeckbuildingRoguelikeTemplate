@@ -6,10 +6,10 @@ using UnityEngine;
 public class CharacterStatusEffectUIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _statusEffectUIWidget;
-    private IGameCharacter _character;
+    private GameCharacter _character;
     private List<StatusEffectUIWidget> _effectUIWidgets;
 
-    public void SetCharacter(IGameCharacter characterToListen)
+    public void SetCharacter(GameCharacter characterToListen)
     {
         _character = characterToListen;
     }

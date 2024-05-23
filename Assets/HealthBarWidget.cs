@@ -8,16 +8,15 @@ public class HealthBarWidget : MonoBehaviour
 {
     [SerializeField] private Image _hpBar;
 
-    private IGameCharacter _character;
+    private GameCharacter _character;
 
-    public void SetGameCharacter(IGameCharacter character)
+    public void SetGameCharacter(GameCharacter character)
     {
         _character = character;
         _character.OnHealthChanged += RefreshData;
     }
     public void RefreshData(int currentHP, int maxHP)
     {
-        print(currentHP+ ", " + maxHP);
         float fillAmount = (float)currentHP / (float)maxHP;
         _hpBar.fillAmount = fillAmount;
     }
