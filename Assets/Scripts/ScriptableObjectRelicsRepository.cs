@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,10 +10,11 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
     [SerializeField] private List<SORelic> _relics;
     private Dictionary<int, RelicEffect> _relicEffects;
 
-    private void Awake()
+    private IEnumerator Start()
     {
+        yield return null;
         _relicEffects = new Dictionary<int, RelicEffect>();
-        _relicEffects.Add(0,new DamageBoosterRelicEffect());
+        _relicEffects.Add(0,new RelicTest());
     }
 
     public IRelicData GetRelicById(int id)
@@ -22,6 +24,7 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
 
     public void ApplyRelicEffect(int relicID)
     {
+        
         _relicEffects[relicID].ApplyEffect(HeroController.Instance.Character);
     }
 

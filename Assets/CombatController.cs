@@ -55,7 +55,7 @@ internal class CombatController : MonoBehaviour
                             break;
                         
                         case 1:
-                            EffectManager.Instance.ApplyEffect(new ActiveStatusEffect(StatusEffects.Artifact, 5),new List<GameCharacter>(){FindObjectOfType<HeroController>().Character});
+                            //EffectManager.Instance.ApplyEffect(new ActiveStatusEffect(StatusEffects.Artifact, 5),new List<GameCharacter>(){FindObjectOfType<HeroController>().Character});
                             break;
                         
                     }
@@ -99,7 +99,7 @@ internal class CombatController : MonoBehaviour
         BattleEnemy enemy = FindObjectOfType<EnemiesBattleController>().GetSingleEnemy(0);
         //PerformAttack(FindObjectOfType<GameCharactersController>().CurrentHeroController.Character, enemy, 50);
         GameCharacter enemyGameCharacter = enemy._gameCharacter;
-        HeroController.Instance.DealDamage(enemyGameCharacter, 60);
+        HeroController.Instance.DealDamage(enemyGameCharacter);
         EndPlayerTurn();
         //FindObjectOfType<BattleController>().EndCombat();
     }

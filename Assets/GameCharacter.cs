@@ -15,6 +15,7 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
     public Action OnDie = delegate {  };
     private IDamageDealer _currentDamageDealer;
 
+    public Action OnPreDamage;
     public void ApplyDamage(GameCharacter target, int amount)
     {
         _currentDamageDealer.DealDamage(target, amount);
@@ -39,6 +40,7 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
 
     public void ReceiveDamage(int amount)
     {
+        Debug.Log($"Vale, me hisieron {amount}");
         CurrentHealth -= amount;
         if (CurrentHealth <= 0)
         {

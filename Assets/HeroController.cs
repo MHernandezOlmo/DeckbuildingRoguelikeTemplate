@@ -31,6 +31,11 @@ public class HeroController : MonoBehaviour
     private ICharacterData _characterData;
     private GameObject _characterInstance;
 
+    private int _baseDamage = 20;
+    private int _combatDamage = 0;
+
+    public int HitDamage { get; set; }
+
     public GameCharacter Character
     {
         get => _character;
@@ -74,9 +79,17 @@ public class HeroController : MonoBehaviour
         _characterInstance.transform.localRotation = Quaternion.identity;
     }
 
-    public void DealDamage(GameCharacter target, int damage)
+    public void DealDamage(GameCharacter target)
     {
-        int baseDamage = damage;
-        _character.ApplyDamage(target, baseDamage);
+        StartCoroutine(CrDealDamage());
+
+        IEnumerator CrDealDamage()
+        {
+            Character.OnPreDamage.Invoke();
+            yield return null;
+            int finalDamage = _baseDamage + _combatDamage + HitDamage;
+            Debug.Log($"Base:{_baseDamage}, Combat{_combatDamage}. Hit{HitDamage}");
+            target.ReceiveDamage(finalDamage);
+        }
     }
 }
