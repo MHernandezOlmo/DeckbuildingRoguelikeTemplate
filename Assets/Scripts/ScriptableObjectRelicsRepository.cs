@@ -14,7 +14,8 @@ public class ScriptableObjectRelicsRepository : MonoBehaviour, IRelicRepository
     {
         yield return null;
         _relicEffects = new Dictionary<int, RelicEffect>();
-        _relicEffects.Add(0,new RelicTest());
+        _relicEffects.Add(0,new Relic0());
+        _relicEffects.Add(1,new Relic1());
     }
 
     public IRelicData GetRelicById(int id)

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,17 +15,14 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
     public Action<int, int> OnHealthChanged = delegate(int i, int i1) {  };
     public Action OnDie = delegate {  };
     private IDamageDealer _currentDamageDealer;
-
+    public int Block { get; set;}
     public Action OnPreDamage;
-    public void ApplyDamage(GameCharacter target, int amount)
-    {
-        _currentDamageDealer.DealDamage(target, amount);
-    }
     public GameCharacter(int maxHealth)
     {
         MaxHealth = maxHealth;
         CurrentHealth = maxHealth;
         _currentDamageDealer = this;
+        Block = 0;
     }
     public void DealDamage(GameCharacter target, int amount)
     {
