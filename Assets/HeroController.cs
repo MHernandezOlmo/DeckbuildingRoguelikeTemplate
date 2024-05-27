@@ -45,6 +45,7 @@ public class HeroController : MonoBehaviour
         }
     }
 
+    
     private void Awake()
     {
         if (_instance == null)
@@ -62,7 +63,7 @@ public class HeroController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            print($"Block-> {Character.Block}");
+            print($"Current-> {Character.CurrentHealth} / Max -> {Character.MaxHealth}");
         }
     }
 
@@ -73,6 +74,7 @@ public class HeroController : MonoBehaviour
     private void Start()
     {
     }
+    
 
     public void InitializeHero()
     {
@@ -80,8 +82,9 @@ public class HeroController : MonoBehaviour
         List<GameObject> charactersPrefab = GameDataController.Instance.CharacterRepository.GetAllCharacterPrefabs().ToList();
         _characterData = characters[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID];
         _characterInstance = Instantiate(charactersPrefab[PersistenceManager.Instance.MyCurrentRun._selectedCharacterID], transform);
-        _character = new GameCharacter(500);
+        _character = new GameCharacter(PersistenceManager.Instance.MyCurrentRun._maxHealth);
         _characterInstance.GetComponentInChildren<HealthBarWidget>().SetGameCharacter(_character);
+        _character.CurrentHealth = PersistenceManager.Instance.MyCurrentRun._currentHealth;
         _characterInstance.GetComponentInChildren<CharacterStatusEffectUIManager>().SetCharacter(_character);
         _characterInstance.transform.localPosition = Vector3.zero;
         _characterInstance.transform.localRotation = Quaternion.identity;

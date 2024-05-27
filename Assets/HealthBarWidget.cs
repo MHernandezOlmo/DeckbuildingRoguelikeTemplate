@@ -14,6 +14,7 @@ public class HealthBarWidget : MonoBehaviour
     {
         _character = character;
         _character.OnHealthChanged += RefreshData;
+        
     }
     public void RefreshData(int currentHP, int maxHP)
     {

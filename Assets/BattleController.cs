@@ -36,9 +36,11 @@ public class BattleController : MonoBehaviour
         
         yield return null;
         yield return null;
+        ScriptableObjectsRelicEffectsRepository _relicEffectsRepository = new ScriptableObjectsRelicEffectsRepository();
+        _relicEffectsRepository.InitalizeRelicEffects();
         foreach (var relic in PersistenceManager.Instance._myCurrentRun._pickedRelicsID)
         {
-            FindObjectOfType<ScriptableObjectRelicsRepository>().ApplyRelicEffect(relic);
+            _relicEffectsRepository.ApplyRelicEffect(relic);
         }
 
         

@@ -7,6 +7,44 @@ using UnityEngine;
 
 public class EnemiesBattleController : MonoBehaviour
 {
+    // Singleton instance
+    private static EnemiesBattleController _instance;
+
+    // Public property to access the singleton instance
+    public static EnemiesBattleController Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<EnemiesBattleController>();
+
+                if (_instance == null)
+                {
+                    GameObject singletonObject = new GameObject(typeof(EnemiesBattleController).ToString());
+                    _instance = singletonObject.AddComponent<EnemiesBattleController>();
+                }
+            }
+            return _instance;
+        }
+    }
+
+    // Prevents instantiation from other classes
+    private EnemiesBattleController() {}
+
+    // Ensure the instance is set in the Awake method
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private List<BattleEnemy> _enemies;
 
@@ -25,17 +63,18 @@ public class EnemiesBattleController : MonoBehaviour
     {
         return _enemies[index];
     }
+
     public List<BattleEnemy> GetBattleEnemies()
     {
         return _enemies;
     }
+
     private void OnEnable()
     {
         BattleEnemy.OnEnemyCreated += AddNewEnemy;
         BattleEnemy.OnEnemyDied += RemoveEnemy;
     }
 
-    
     private void OnDisable()
     {
         BattleEnemy.OnEnemyCreated -= AddNewEnemy;
@@ -66,15 +105,15 @@ public class EnemiesBattleController : MonoBehaviour
             //_enemies[i].ReceiveDamage(damage);
         }
     }
-    
+
     public void InitializeEnemies()
     {
-        IMapNode node =  Map.Instance.GetNode(PersistenceManager.Instance.MyCurrentRun._currentBattleID);
+        IMapNode node = Map.Instance.GetNode(PersistenceManager.Instance.MyCurrentRun._currentBattleID);
         BattleNode battleNode = node as BattleNode;
 
         List<SOEnemy> enemies = GameDataController.Instance.EnemyRespository.GetAllEnemies().ToList();
         List<GameObject> enemiesPrefab = GameDataController.Instance.EnemyRespository.GetAllEnemyPrefabs().ToList();
-        
+
         SOBattleRoom battleRoom = GameDataController.Instance.BattleRoomRepository.GetBattleRoomById(battleNode.GetBattleRoomID());
         for (var i = 0; i < battleRoom.Enemies.Count; i++)
         {
@@ -84,5 +123,3 @@ public class EnemiesBattleController : MonoBehaviour
         }
     }
 }
-
-

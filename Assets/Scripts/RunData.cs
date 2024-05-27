@@ -11,6 +11,8 @@ public class RunData
     public int _currentMapNodeID;
     public int _currentBattleID;
     public int _seed;
+    public int _maxHealth;
+    public int _currentHealth;
     public List<int> _pickedItemsID;
     public RunData(int selectedCharacterID)
     {
@@ -33,6 +35,9 @@ public class RunData
                 _pickedItemsID = new List<int>(){1,1,1,1};
                 break;
         }
+
+        _maxHealth = 50;
+        _currentHealth = 30;
         _pickedRelicsID = new List<int>();
         _gameState = GameState.Map;
         _currentBattleID = -1;

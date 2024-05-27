@@ -10,7 +10,18 @@ using Random = UnityEngine.Random;
 public class GameCharacter : IDamageDealer, IDamageReceiver
 {
     public int Damage { get; set; }
-    public int CurrentHealth { get; set; }
+
+    private int _currentHealth;
+    public int CurrentHealth
+    {
+        get=> _currentHealth;
+        set
+        {
+            _currentHealth = value;
+            OnHealthChanged.Invoke(CurrentHealth, MaxHealth);
+        }
+    }
+
     public int MaxHealth { get; set; }
     public Action<int, int> OnHealthChanged = delegate(int i, int i1) {  };
     public Action OnDie = delegate {  };
@@ -20,9 +31,16 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
     public GameCharacter(int maxHealth)
     {
         MaxHealth = maxHealth;
-        CurrentHealth = maxHealth;
         _currentDamageDealer = this;
         Block = 0;
+    }
+    public void Heal(int amount)
+    {
+        CurrentHealth += amount;
+        if (CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
     public void DealDamage(GameCharacter target, int amount)
     {
@@ -45,6 +63,6 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
             CurrentHealth = 0;
             OnDie.Invoke();
         }
-        OnHealthChanged.Invoke(CurrentHealth, MaxHealth);
     }
+    
 }
