@@ -44,6 +44,6 @@ public class MapPlayerVisualizer : MonoBehaviour
     
     void Update()
     {
-        
+        Camera.main.transform.position = _cameraTarget.transform.position;
     }
 }

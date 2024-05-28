@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   name: R N 4
-  description: R D 4
+  description: At the start of each combat, heal 20 damage
   icon: {fileID: 21300000, guid: 04fd79b9e9a95be4689f059bb8f2d983, type: 3}

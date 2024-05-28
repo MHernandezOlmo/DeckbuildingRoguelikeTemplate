@@ -15,12 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/FirstRelicSelector.unity
     guid: 9b6f5adaca3a7da49ad7894459eacac7
   - enabled: 1
-    path: Assets/Scenes/CharacterSelector.unity
-    guid: 0d382df283b2bc44d9ca527d5c6c57a2
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 6cecc56e0e7614aecb20048491cef660
   - enabled: 1
     path: Assets/Scenes/Map.unity
     guid: 9824e5b94cd9cda4f931ce304182006d
+  - enabled: 1
+    path: Assets/Scenes/MainRun.unity
+    guid: b831f8d87bb3224468d0c7460622b932
   m_configObjects: {}

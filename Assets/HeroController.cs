@@ -7,7 +7,7 @@ using System.Linq;
 public class HeroController : MonoBehaviour
 {
     private static HeroController _instance;
-
+    public Action OnAttack;
     public static HeroController Instance
     {
         get
@@ -35,6 +35,7 @@ public class HeroController : MonoBehaviour
     private int _combatDamage = 0;
 
     public int HitDamage { get; set; }
+    public float FinalDamageMultiplier { get; set; }
 
     public GameCharacter Character
     {
@@ -92,6 +93,8 @@ public class HeroController : MonoBehaviour
 
     public void DealDamage(GameCharacter target)
     {
+        FinalDamageMultiplier = 1f;
+        OnAttack.Invoke();
         StartCoroutine(CrDealDamage());
 
         IEnumerator CrDealDamage()
@@ -99,6 +102,7 @@ public class HeroController : MonoBehaviour
             Character.OnPreDamage.Invoke();
             yield return null;
             int finalDamage = _baseDamage + _combatDamage + HitDamage;
+            finalDamage =Mathf.FloorToInt(FinalDamageMultiplier*finalDamage);
             Debug.Log($"Base:{_baseDamage}, Combat{_combatDamage}. Hit{HitDamage}");
             target.ReceiveDamage(finalDamage);
         }

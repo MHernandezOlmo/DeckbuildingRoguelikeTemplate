@@ -12,9 +12,10 @@ public class UIRelicWidget : MonoBehaviour, IPointerClickHandler
     [SerializeField] private TextMeshProUGUI _description;
     [SerializeField] private Image _image;
     private IRelicData _myRelicData;
-    public static Action<int> OnRelicPicked; 
-    public void ReceiveData(IRelicData relicData)
+    private NewRelicController _relicController;
+    public void ReceiveData(IRelicData relicData, NewRelicController newRelicController)
     {
+         _relicController = newRelicController;
         _myRelicData = relicData;
         _title.text = relicData.Name;
         _description.text = relicData.Description;
@@ -25,7 +26,7 @@ public class UIRelicWidget : MonoBehaviour, IPointerClickHandler
     {
         if (_myRelicData != null)
         {
-            OnRelicPicked?.Invoke(_myRelicData.Id);
+            _relicController.PickRelic(_myRelicData.Id);
         }
     }
 

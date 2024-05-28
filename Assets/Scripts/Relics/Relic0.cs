@@ -10,9 +10,6 @@ public class Relic0 : RelicEffect
     {
 
     }
-    
-    
-    
     public override void ApplyEffect(GameCharacter character)
     {
         relicEffectTime = 0;

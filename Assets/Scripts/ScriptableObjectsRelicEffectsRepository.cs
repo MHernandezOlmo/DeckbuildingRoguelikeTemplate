@@ -13,10 +13,12 @@ public class ScriptableObjectsRelicEffectsRepository : MonoBehaviour
         _relicEffects.Add(1,new Relic1());
         _relicEffects.Add(2,new Relic2());
         _relicEffects.Add(3,new Relic3());
+        _relicEffects.Add(4,new Relic4());
+        _relicEffects.Add(5,new Relic5());
+        _relicEffects.Add(6,new Relic6());
     }
     public void ApplyRelicEffect(int relicID)
     {
-        
         _relicEffects[relicID].ApplyEffect(HeroController.Instance.Character);
     }
 

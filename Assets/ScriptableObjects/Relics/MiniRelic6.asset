@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   name: R N 6
-  description: R D 6
+  description: The first time you lose HP each combat earn 5 gold
   icon: {fileID: 21300000, guid: 0b4c397bf6fc0b146983b63e96017e39, type: 3}

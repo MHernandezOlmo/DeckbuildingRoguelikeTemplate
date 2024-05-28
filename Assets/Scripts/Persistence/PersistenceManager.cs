@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
@@ -7,7 +8,8 @@ public class PersistenceManager
 {
     private static PersistenceManager _instance;
     private IPersistenceService _persistenceService;
-
+    public static Action OnGoldChange;
+    public static Action OnPickRelic = delegate {  };
     public ProgressData MyProgressData { get; set; }
     public RunData _myCurrentRun;
     public RunData MyCurrentRun {
@@ -62,6 +64,16 @@ public class PersistenceManager
         string jsonData = JsonConvert.SerializeObject(MyProgressData);
         _persistenceService.Save("ProgressData", jsonData);
     }
+
+    public void AddGold(int amount)
+    {
+        if (MyCurrentRun != null)
+        {
+            MyCurrentRun.AddGold(amount);
+        }
+        SaveRunData();
+        OnGoldChange.Invoke();
+    }
     public void AddPickedRelicToRun(int relicID)
     {
         if (MyCurrentRun != null)
@@ -69,6 +81,8 @@ public class PersistenceManager
             MyCurrentRun.AddPickedRelic(relicID);
             SaveRunData();
         }
+
+        OnPickRelic.Invoke();
     }
 
     public void WinBattle()

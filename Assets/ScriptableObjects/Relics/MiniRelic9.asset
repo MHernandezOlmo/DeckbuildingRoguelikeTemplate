@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 9
   name: R N 9
-  description: R D 9
+  description: Every 3 turns, gain 10 gold
   icon: {fileID: 21300000, guid: b970075aa8ec0664791cdace3181b979, type: 3}

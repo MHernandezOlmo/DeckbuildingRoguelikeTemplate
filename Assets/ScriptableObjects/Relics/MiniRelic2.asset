@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   name: R N 2
-  description: R D 2
+  description: ' If you do not hit any attack target, gain 20hp'
   icon: {fileID: 21300000, guid: 7884142c5655bf84cb60ed875dc5ab31, type: 3}

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   name: R N 5
-  description: R D 5
+  description: Whenever you take damage, deal 3 damage back
   icon: {fileID: 21300000, guid: e4bae0771b430d84ba3f8ecd14e1505a, type: 3}

@@ -9,7 +9,9 @@ using UnityEngine.UI;
 internal class CombatController : MonoBehaviour
 {
     private static CombatController _instance;
-
+    public static Action OnStartTurn;
+    public static Action OnEndTurn;
+    
     public static CombatController Instance
     {
         get
@@ -113,9 +115,9 @@ internal class CombatController : MonoBehaviour
 
         IEnumerator CrWaitAndStartPlayerTurn()
         {
-            yield return new WaitForSeconds(3);
-            print("Termina Turno");
-
+            yield return new WaitForSeconds(1);
+            OnEndTurn.Invoke();
+            yield return new WaitForSeconds(1);
             StartPlayerTurn();
         }
     }
@@ -149,6 +151,7 @@ internal class CombatController : MonoBehaviour
 
     public void StartPlayerTurn()
     {
+        OnStartTurn.Invoke();
         _combatButton.gameObject.SetActive(true);
         _inventoryController.DrawItem();
         _combatAreaController.RefreshTargets();

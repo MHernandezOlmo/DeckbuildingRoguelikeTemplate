@@ -111,7 +111,7 @@ public class MainMenuSceneController : MonoBehaviour
     public void StartRun()
     {
         PersistenceManager.Instance.StartRun(_selectedCharacter);
-        GameFlowEvents.LoadScene.Invoke("FirstRelicSelector");
+        GameFlowEvents.LoadScene.Invoke("MainRun");
     }
     public void QuitGame()
     {

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   name: R N 7
-  description: R D 7
+  description: Whenever you add a weapon to your Inventory, gain 9 gold
   icon: {fileID: 21300000, guid: 3596930571d75944bb2eb48fcb3c173f, type: 3}

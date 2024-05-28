@@ -13,11 +13,16 @@ public class GameFlowController : MonoBehaviour
     public void Awake()
     {
         GameFlowEvents.LoadScene.AddListener(LoadScene);
+        GameFlowEvents.LoadSceneAditive.AddListener(LoadSceneAdditive);
     }
 
     public void LoadSceneAsync(string sceneName)
     {
         StartCoroutine(CoLoadSceneAsync(sceneName));
+    }
+    public void LoadSceneAdditive(string sceneName)
+    {
+        StartCoroutine(CoLoadSceneAdditive(sceneName));
     }
     public IEnumerator CoLoadSceneAsync(string sceneName)
     {
@@ -42,6 +47,12 @@ public class GameFlowController : MonoBehaviour
     {
         StartCoroutine(coLoadScene(sceneName));
 
+    }
+
+    IEnumerator CoLoadSceneAdditive(string sceneName)
+    {
+        yield return null;
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
     IEnumerator coLoadScene(string sn)
     {

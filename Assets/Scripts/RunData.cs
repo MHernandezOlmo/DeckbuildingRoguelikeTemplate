@@ -14,6 +14,7 @@ public class RunData
     public int _maxHealth;
     public int _currentHealth;
     public List<int> _pickedItemsID;
+    public int _gold;
     public RunData(int selectedCharacterID)
     {
         _selectedCharacterID = selectedCharacterID;
@@ -44,9 +45,15 @@ public class RunData
         _currentMapNodeID = -1;
         string seedString = "myRandomSeed123";
         _seed =seedString.GetHashCode();
+        _gold = 0;
+    }
+
+
+    public void AddGold(int amount)
+    {
+        _gold += amount;
     }
     
-
     public void AddPickedRelic(int relicID)
     {
         _pickedRelicsID.Add(relicID);

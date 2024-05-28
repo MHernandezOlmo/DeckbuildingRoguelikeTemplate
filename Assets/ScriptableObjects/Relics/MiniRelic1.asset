@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name: R N 1
-  description: R D 1
+  description: Start each combat with 10 block
   icon: {fileID: 21300000, guid: d123ca293befb654f9ccada980c9fa8e, type: 3}

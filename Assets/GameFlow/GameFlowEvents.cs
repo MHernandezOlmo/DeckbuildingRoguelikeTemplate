@@ -55,6 +55,7 @@ public static class GameFlowEvents
      */
 
     public static StringEvent LoadScene = new StringEvent();
+    public static StringEvent LoadSceneAditive = new StringEvent();
     public class StringEvent : UnityEvent<string> { };
 
 }

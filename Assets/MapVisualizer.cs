@@ -48,6 +48,7 @@ public class MapVisualizer : MonoBehaviour
             {
                 MapNode node = Instantiate(_mapNodePrefab,
                         new Vector3(GetHorizontalPosition(j, _currentMap.Nodes[i].Count), -i, 0), quaternion.identity).GetComponent<MapNode>();
+                node.transform.SetParent(transform);
                 switch (_currentMap.Nodes[i][j])
                 {
                     case StageBossNode:
@@ -77,9 +78,11 @@ public class MapVisualizer : MonoBehaviour
         switch (_UIMapNodes[node]._type)
         {
             case MapNodes.Battle:
+                
                 PersistenceManager.Instance.SelectBattle(node);
                 int battleRoomID = ((BattleNode)_currentMap.GetNode(node)).GetBattleRoomID();
-                GameFlowEvents.LoadScene.Invoke("Battle");        
+                RunStateController.Instance.LoadBattle();
+                //GameFlowEvents.LoadScene.Invoke("Battle");        
                 break;
             
             case MapNodes.Boss:

@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Relic6 : RelicEffect
+public class Relic8 : RelicEffect
 {
     private int effectTimes;
-    public Relic6()
+    
+    public Relic8()
     {
 
     }
-    
     public override void ApplyEffect(GameCharacter character)
     {
-        HeroController.Instance.Character.OnHealthChanged+=()=>
+        CombatController.OnStartTurn+=()=>
         {
             if (effectTimes < 1)
             {
-                effectTimes++;
                 PersistenceManager.Instance.AddGold(5);
+                effectTimes++;
             }
         };
     }

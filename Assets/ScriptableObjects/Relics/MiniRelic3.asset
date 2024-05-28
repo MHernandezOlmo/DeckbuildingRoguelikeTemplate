@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   name: R N 3
-  description: R D 3
+  description: At the start of each combat, apply VULNERABLE to all enemies
   icon: {fileID: 21300000, guid: 0769de0cebb90774b87d1deb2a2b24c1, type: 3}
