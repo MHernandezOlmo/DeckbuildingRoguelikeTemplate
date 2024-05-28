@@ -6,6 +6,6 @@ public interface IDamageDealer
 {
     int Damage { get;}
 
-    void DealDamage(GameCharacter target, int amount);
+    void DealDamage(GameCharacter target, int amount, GameCharacter instigator);
 }
 

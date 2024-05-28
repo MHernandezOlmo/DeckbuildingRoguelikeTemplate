@@ -86,7 +86,7 @@ internal class CombatController : MonoBehaviour
                     {
                         case 0:
                             print("Soy enemigo" + enemy.name + " y hago la dañacion");
-                            enemy._gameCharacter.DealDamage(FindObjectOfType<HeroController>().Character, 50);
+                            enemy._gameCharacter.DealDamage(FindObjectOfType<HeroController>().Character, 50, enemy._gameCharacter);
                             break;
 
                         case 1:

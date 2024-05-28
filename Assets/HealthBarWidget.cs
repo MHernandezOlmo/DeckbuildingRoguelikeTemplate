@@ -16,9 +16,9 @@ public class HealthBarWidget : MonoBehaviour
         _character.OnHealthChanged += RefreshData;
         
     }
-    public void RefreshData(int currentHP, int maxHP)
+    public void RefreshData()
     {
-        float fillAmount = (float)currentHP / (float)maxHP;
+        float fillAmount = (float)_character.CurrentHealth / (float)_character.MaxHealth;
         _hpBar.fillAmount = fillAmount;
     }
     public void RefreshData(float fillAmount)
