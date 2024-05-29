@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ public class NewRelicController : MonoBehaviour
     public static NewRelicController Instance { get; private set; }
     [SerializeField] private List<UIRelicWidget> _widgets;
     [SerializeField] private GameObject _newRelicsCanvas;
+    public Action OnRelicPicked;
     public void AddNewRelic()
     {
         
@@ -18,18 +20,13 @@ public class NewRelicController : MonoBehaviour
         }
         _newRelicsCanvas.SetActive(true);
     }
-    void Start()
-    {
-        if (PersistenceManager.Instance.MyCurrentRun._pickedRelicsID.Count ==0)
-        {
-            AddNewRelic();
-        }
-    }
 
     public void PickRelic(int relicID)
     {
         PersistenceManager.Instance.AddPickedRelicToRun(relicID);
         _newRelicsCanvas.SetActive(false);
+        OnRelicPicked?.Invoke();
+        
     }
     void Awake()
     {

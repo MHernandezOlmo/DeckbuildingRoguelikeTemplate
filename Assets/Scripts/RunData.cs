@@ -43,6 +43,7 @@ public class RunData
         _gameState = GameState.Map;
         _currentBattleID = -1;
         _currentMapNodeID = -1;
+        _gameState = GameState.Start;
         string seedString = "myRandomSeed123";
         _seed =seedString.GetHashCode();
         _gold = 0;
@@ -67,5 +68,5 @@ public class RunData
 
 public enum GameState
 {
-    Map, Battle
+    Start, Map, Battle
 }

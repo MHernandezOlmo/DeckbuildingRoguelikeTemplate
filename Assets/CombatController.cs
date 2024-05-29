@@ -103,7 +103,7 @@ internal class CombatController : MonoBehaviour
             }
             else
             {
-                _battleController.WinBattle();
+                FindObjectOfType<BattleController>().WinBattle();
             }
         }
     }
@@ -116,7 +116,7 @@ internal class CombatController : MonoBehaviour
         IEnumerator CrWaitAndStartPlayerTurn()
         {
             yield return new WaitForSeconds(1);
-            OnEndTurn.Invoke();
+            OnEndTurn?.Invoke();
             yield return new WaitForSeconds(1);
             StartPlayerTurn();
         }
@@ -125,7 +125,7 @@ internal class CombatController : MonoBehaviour
     public void ReceiveTargetsHitData(List<HitTargetInfo> info)
     {
         _lastTargetsHitInfo = info;
-        OnPostTargets.Invoke();
+        OnPostTargets?.Invoke();
         foreach (var hitTargetInfo in info)
         {
             //print($"Aplico el efecto de haberle dado a la diana {hitTargetInfo._targetColliderPriority.GetTargetType()}, con prioridad {hitTargetInfo._targetColliderPriority.GetColliderPriority()}");
@@ -151,7 +151,7 @@ internal class CombatController : MonoBehaviour
 
     public void StartPlayerTurn()
     {
-        OnStartTurn.Invoke();
+        OnStartTurn?.Invoke();
         _combatButton.gameObject.SetActive(true);
         _inventoryController.DrawItem();
         _combatAreaController.RefreshTargets();

@@ -19,7 +19,7 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
         set
         {
             _currentHealth = value;
-            OnHealthChanged.Invoke();
+            OnHealthChanged?.Invoke();
         }
     }
 
@@ -35,6 +35,7 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
     {
         instance = this;
         MaxHealth = maxHealth;
+        CurrentHealth = MaxHealth;
         _currentDamageDealer = this;
         Block = 0;
     }
@@ -51,12 +52,12 @@ public class GameCharacter : IDamageDealer, IDamageReceiver
         LastAttacker = instigator;
         Debug.Log($"Daño final " + amount);
         target.ReceiveDamage(amount);
-        OnPostDamageReceived.Invoke();
+        OnPostDamageReceived?.Invoke();
     }
     
     public void ReceiveDamage(int amount)
     {
-        Debug.Log($"Vale, me hisieron {amount}");
+        Debug.Log($"Vale, me hisieron {amount} y tenia "+CurrentHealth);
         CurrentHealth -= amount;
         if (CurrentHealth <= 0)
         {

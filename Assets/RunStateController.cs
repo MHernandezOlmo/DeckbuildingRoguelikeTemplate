@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RunStateController : MonoBehaviour
 {
+    [SerializeField] private NewRelicController _newRelicController;
     private static RunStateController _instance;
     public static RunStateController Instance
     {
@@ -40,6 +41,32 @@ public class RunStateController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
+    }
+
+    public void RelicAndMap()
+    {
+        LoadMapState();   
+    }
+
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(1);
+        switch (PersistenceManager.Instance.MyCurrentRun._gameState)
+        {
+            case GameState.Start:
+                _newRelicController.OnRelicPicked += RelicAndMap;
+                _newRelicController.AddNewRelic();
+                break;
+            
+            case GameState.Battle:
+
+                break;
+            case GameState.Map:
+
+                break;
+        }
     }
 
     public void LoadMapState()
@@ -51,6 +78,7 @@ public class RunStateController : MonoBehaviour
     public void LoadBattle()
     {
         SceneManager.UnloadSceneAsync(currentScene);
+        Camera.main.transform.position = new Vector3(0, 0, -10);
         GameFlowEvents.LoadSceneAditive.Invoke("Battle");
 
     }
@@ -66,4 +94,6 @@ public class RunStateController : MonoBehaviour
             LoadBattle();
         }
     }
+    
+    
 }

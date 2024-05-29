@@ -22,14 +22,7 @@ public class MainMenuSceneController : MonoBehaviour
 
     public void Continue()
     {
-        if (PersistenceManager.Instance.MyCurrentRun._gameState == GameState.Battle)
-        {
-            GameFlowEvents.LoadScene.Invoke("Battle");
-        }
-        else
-        {
-            GameFlowEvents.LoadScene.Invoke("Map");
-        }
+        GameFlowEvents.LoadScene.Invoke("MainRun");
     }
 
     void Start()

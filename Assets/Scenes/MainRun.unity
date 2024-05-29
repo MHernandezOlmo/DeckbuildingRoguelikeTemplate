@@ -1660,7 +1660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb11e2bbd7f94dec92b523af2eeb619c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroController: {fileID: 1476265569}
   _enemiesBattleController: {fileID: 0}
 --- !u!4 &1268866594
 Transform:
@@ -1767,6 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b50d1c2cd66d074cbc1f07c4192728c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _newRelicController: {fileID: 1587219806}
 --- !u!1 &1476265568
 GameObject:
   m_ObjectHideFlags: 0

@@ -1482,7 +1482,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb11e2bbd7f94dec92b523af2eeb619c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heroController: {fileID: 1476265569}
   _enemiesBattleController: {fileID: 307558712}
 --- !u!4 &1268866594
 Transform:

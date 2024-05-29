@@ -52,7 +52,7 @@ public class HeroController : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: if you want to keep this instance across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else if (_instance != this)
         {
@@ -67,15 +67,6 @@ public class HeroController : MonoBehaviour
             print($"Current-> {Character.CurrentHealth} / Max -> {Character.MaxHealth}");
         }
     }
-
-    private void OnEnable()
-    {
-    }
-
-    private void Start()
-    {
-    }
-    
 
     public void InitializeHero()
     {
@@ -94,12 +85,12 @@ public class HeroController : MonoBehaviour
     public void DealDamage(GameCharacter target)
     {
         FinalDamageMultiplier = 1f;
-        OnAttack.Invoke();
+        OnAttack?.Invoke();
         StartCoroutine(CrDealDamage());
 
         IEnumerator CrDealDamage()
         {
-            Character.OnPreDamage.Invoke();
+            Character.OnPreDamage?.Invoke();
             yield return null;
             int finalDamage = _baseDamage + _combatDamage + HitDamage;
             finalDamage =Mathf.FloorToInt(FinalDamageMultiplier*finalDamage);
