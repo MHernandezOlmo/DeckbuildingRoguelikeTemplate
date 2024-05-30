@@ -53,6 +53,7 @@ public class RunStateController : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(1);
+        print(PersistenceManager.Instance.MyCurrentRun._gameState);
         switch (PersistenceManager.Instance.MyCurrentRun._gameState)
         {
             case GameState.Start:
@@ -61,10 +62,10 @@ public class RunStateController : MonoBehaviour
                 break;
             
             case GameState.Battle:
-
+                LoadBattle();
                 break;
             case GameState.Map:
-
+                LoadMapState();
                 break;
         }
     }
@@ -72,13 +73,21 @@ public class RunStateController : MonoBehaviour
     public void LoadMapState()
     {
         currentScene = "Map";
+        PersistenceManager.Instance._myCurrentRun._gameState = GameState.Map;
+        PersistenceManager.Instance.SaveRunData();
         GameFlowEvents.LoadSceneAditive.Invoke("Map");
     }
 
     public void LoadBattle()
     {
-        SceneManager.UnloadSceneAsync(currentScene);
+        if (currentScene != null)
+        {
+            print(currentScene);
+            SceneManager.UnloadSceneAsync(currentScene);
+        }
         Camera.main.transform.position = new Vector3(0, 0, -10);
+        PersistenceManager.Instance._myCurrentRun._gameState = GameState.Battle;
+        PersistenceManager.Instance.SaveRunData();
         GameFlowEvents.LoadSceneAditive.Invoke("Battle");
 
     }
