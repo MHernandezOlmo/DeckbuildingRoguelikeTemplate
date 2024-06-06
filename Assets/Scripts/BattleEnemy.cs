@@ -39,6 +39,7 @@ public class BattleEnemy : MonoBehaviour
         _gameCharacter.OnDie += Die;
         _healthBarWidget.SetGameCharacter(_gameCharacter);
         _statusEffectUI.SetCharacter(_gameCharacter);
+        GameCharactersController.Instance.AddCharacter(_gameCharacter, gameObject);
         OnEnemyCreated.Invoke(this);
     }
 }

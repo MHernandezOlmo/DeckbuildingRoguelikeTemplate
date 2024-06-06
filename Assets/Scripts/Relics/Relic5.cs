@@ -13,7 +13,7 @@ public class Relic5 : RelicEffect
     
     public override void ApplyEffect(GameCharacter character)
     {
-        HeroController.Instance.Character.OnPostDamageReceived+=()=>
+        HeroController.Instance.Character.OnPostDamageReceived+=(character, Damage)=>
         {
             HeroController.Instance.Character.LastAttacker.ReceiveDamage(5);
         };

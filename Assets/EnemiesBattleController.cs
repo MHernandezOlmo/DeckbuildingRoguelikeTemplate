@@ -120,6 +120,7 @@ public class EnemiesBattleController : MonoBehaviour
             GameObject enemy = Instantiate(enemiesPrefab[battleRoom.Enemies[i].Id], transform.GetChild(i));
             enemy.transform.localPosition = Vector3.zero;
             enemy.transform.localRotation = Quaternion.identity;
+            
         }
     }
 }

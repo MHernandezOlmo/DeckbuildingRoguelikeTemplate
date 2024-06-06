@@ -15,14 +15,12 @@ public class HeroController : MonoBehaviour
             if (_instance == null)
             {
                 _instance = FindObjectOfType<HeroController>();
-
                 if (_instance == null)
                 {
                     GameObject singleton = new GameObject(typeof(HeroController).ToString());
                     _instance = singleton.AddComponent<HeroController>();
                 }
             }
-
             return _instance;
         }
     }
@@ -80,6 +78,8 @@ public class HeroController : MonoBehaviour
         _characterInstance.GetComponentInChildren<CharacterStatusEffectUIManager>().SetCharacter(_character);
         _characterInstance.transform.localPosition = Vector3.zero;
         _characterInstance.transform.localRotation = Quaternion.identity;
+        GameCharactersController.Instance.AddCharacter(_character,_characterInstance);
+
     }
 
     public void DealDamage(GameCharacter target)
